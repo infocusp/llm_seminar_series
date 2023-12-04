@@ -1,6 +1,6 @@
 # Landscape of LLMs
 
-<iframe src="https://xmind.works/embed/cmFNh1uK?sheet-id=51f8d72e-7bd9-46bb-a467-3fd4ba6fa15b" width="100%" height="600px" frameborder="0" scrolling="no" allow="fullscreen"></iframe>
+![LLM Landscape Mindmap](./../../images/session_1/part_3_landscape_of_llms/llm_landscape_mindmap.png)
 
 ## LLMs and Substreams
 
