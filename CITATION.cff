@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it as below.
+title: LLM Primer
+version: 1.0.0
+doi: <INSERT DOI HERE>
+authors:
+  - name: Hetul Patel
+    email: hetul@infocusp.com
+repository-code: https://github.com/InFoCusp/llm_seminar_series
+license: MIT
+homepage: https://github.com/InFoCusp/llm_seminar_series
+repository:
+  url: https://github.com/InFoCusp/llm_seminar_series
+  doi: <INSERT DOI HERE>
+  release: v1.0.0
+  date-released: 2023-12-05
+  title: LLM Primer v1.0.0
+description: A multi-part seminar series on Large Language Models (LLMs).
+keywords:
+  - Large Language Models
+  - Natural Language Processing
+  - Deep Learning
