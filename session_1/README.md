@@ -16,4 +16,4 @@ This session is aimed to help:
 ## Material
 
 * Recording: TODO
-* Presentation: TODO
+* Presentation: [LLM Seminar Series - Session 1](https://www.canva.com/design/DAFypvc2pwc/u6-4xbx3ELYMcufIg-rShw/view?utm_content=DAFypvc2pwc&utm_campaign=designshare&utm_medium=link&utm_source=editor)
