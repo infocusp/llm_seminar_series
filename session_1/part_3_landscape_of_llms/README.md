@@ -710,7 +710,7 @@
     This article discusses 8 key considerations for building production-grade LLM apps over your data. These considerations include using different chunks for retrieval and synthesis, using embeddings that live in a different latent space than the raw text, dynamically loading/updating the data, designing the pipeline for scalability, storing data in a hierarchical fashion, using robust data pipelines, and using hybrid search for entity lookup.
     
 
-### Embeddings for Retrival
+### Embeddings for Retrieval
 
 - [How to use Aleph Alpha's semantic embeddings](https://python.langchain.com/docs/modules/data_connection/text_embedding/integrations/aleph_alpha)
     
