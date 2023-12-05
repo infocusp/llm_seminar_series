@@ -2,6 +2,18 @@
 
 ![LLM Landscape](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-Main.png)
 
+# Table of Contents
+* [Pretrained LLMs](#-pretrained-llms)
+* [Prompt Engineering](#-prompt-engineering)
+* [Training LLMs](#-training-llms)
+* [Evaluating LLMs](#-evaluating-llms)
+* [LLMs Deployment](#-llms-deployment)
+* [LLMs Inference Optimisation](#-llms-inference-optimisation)
+* [LLMs with Large Context Window](#-llms-with-large-context-window)
+* [Challanges with LLMs](#-challanges-with-llms)
+* [LLM Applications](#-llm-applications)
+* [LLM Application Development](#-llm-application-development)
+* [LLM Courses](#-llm-courses)
 
 ## 👉 Pretrained LLMs
 
@@ -419,7 +431,7 @@
     
     This talk discusses the challenges in building LLM applications for production. These challenges include consistency, hallucinations, privacy, context length, data drift, model updates and compatibility, LM on the edge, model size, non-English languages, chat vs. search as an interface, data bottleneck, and hype cycles and the importance of data.
     
-- **[Open challenges in LLM research](https://huyenchip.com/2023/08/16/llm-research-open-challenges.html)**
+- [Open challenges in LLM research](https://huyenchip.com/2023/08/16/llm-research-open-challenges.html)
     
     `hallucinations` `context learning` `multimodality` `new architecture` `GPU alternatives` `agent usability` `learning from human preference` `chat interface efficiency` `non-English language support`
     
