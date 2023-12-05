@@ -9,9 +9,9 @@ This session is aimed to help:
 
 ## Outline
 
-* Part 1: The Emergence of LLMs
-* Part 2: Building blocks of LLMs
-* Part 3: Landscape of LLMs
+* Part 1: [The Emergence of LLMs](part_1_emergence_of_llms)
+* Part 2: [Building blocks of LLMs](part_2_building_blocks_of_llms)
+* Part 3: [Landscape of LLMs](part_3_landscape_of_llms)
 
 ## Material
 
