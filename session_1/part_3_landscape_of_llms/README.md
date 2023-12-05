@@ -1,189 +1,12 @@
 # Landscape of LLMs
 
-![LLM Landscape Mindmap](./../../images/session_1/part_3_landscape_of_llms/llm_landscape_mindmap.png)
+![LLM Landscape](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-Main.png)
 
-## LLMs and Substreams
 
-- Pretrained LLMs
-    - Proprietary LLMs
-        - GPT
-        - Claude
-        - Bard
-        - PaLM
-    - Opensource LLMs
-        - Dolly
-        - Falcon
-        - LLaMA
-        - Vicuna
-        - MPT
-        - Orca
-        - Mistral AI
-        - Zephyr
-        - LaMini
-        - RedPajama
-        - Notus
-- Prompt Engineering Techniques
-    - Zero-Shot Prompting
-    - Few-Shot Prompting
-    - Chain-of-Thought Prompting
-    - Self-Consistency
-    - Generated Knowledge Prompting
-    - Tree of Thoughts (ToT)
-    - Retrieval Augmented Generation (RAG)
-    - Automatic Reasoning and Tool-use (ART)
-    - Automatic Prompt Engineer (APE)
-    - Active-Prompt
-    - Directional Stimulus Prompting
-    - ReAct Prompting
-    - Multimodal CoT Prompting
-    - GraphPrompts
-    - System 2 Attention (S2A)        
-- Training LLMs
-    - Unsupervised Pretraining
-    - Supervised Finetuning
-        - Fine-Tuning Language Models to Human Preferences
-            - RLHF
-            - Direct Preference Optimization (DPO)
-            - Chain of Hindsight (CoH)
-            - Proximal Policy Optimization (PPO)
-            - Actor Critic Methods (A2C)
-            - Trust Region Policy Optimization (TRPO)
-        - T-Few Finetuning
-        - PEFT
-            - Adapters
-            - LoRa
-            - Prefix Tuning
-            - P Tuning
-            - Prompt Tuning
-        - Natural Instructions
-            - InstructGPT
-            - T0
-            - FLAN
-            - The Turking Test
-        - Retrieval Based Finetuning
-            - Retrieval-Enhanced Transformer (RETRO)
-            - Retrieval-Augmented Language Model Pre-Training (REALM)
-            - Retrieval-Augmented Black-Box Language Models (REPLUG)
-            - Retrieval-Augmented Dual Instruction Tuning (RA-DIT)            
-    - Language Agent Fine-Tuning
-        - FireAct
-    - LLM Training Frameworks
-        - DeepSpeed
-        - FairScale
-        - Colossal-AI
-    - LLM Finetuning Frameworks
-        - Huggigface Supervised Fine-tuning Trainer
-        - Huggigface Transformer Reinforcement Learning
-        - LMFlow
-        - X—LLM
-- Evaluating LLMs
-    - Evaluation Driven Development
-        - Evaluation Metrics
-        - Evaluation Datasets
-    - Evaluation Frameworks
-        - MLflow LLM Evaluate
-        - ragas 
-    - Using LLMs for Evaluation
-        - Judging LLM-as-a-Judge
-        - G-Eval
-- LLMs Deployment
-    - LLMs Deployment Frameworks
-        - vLLM
-        - TensorRT-LLM
-        - Text Generation Inference (TGI)
-        - LoRAX
-        - LangServe
-    - Running LLMs Locally
-        - Llama.cpp
-        - h20GPT
-        - GPT4All
-        - LocalAI
-        - LocalGPT
-    - Semantic Cache for LLMs
-        - GPTCache
-- LLMs Inference Optimisation
-	- Quantization
-		- Quantization Types
-			- Quantization-Aware Training (QAT)
-			- Post-Training Quantization (PTQ)
-		- Quantization Techniques
-			- GGML
-			- GGUF
-			- GPTQ
-			- NF4
-			- Dense-and-Sparse Quantization
-			- Sparse Quantized representation (SpQR)
-			- 1-bit Quantization
-		- Libraries
-			- llama.cpp
-			- ExLlama
-			- GPTQ-for-Llama
-			- AutoGPTQ
-			- bitsandbyes
-	- Faster Decoding Techniques
-		- Speculative decoding
-		- Lookahead Decoding (LADE)
-	- Key-value cache
-		- Multi-Query Attention (MQA)
-		- Grouped-Query Attention (GQA)
-- LLMs with Large Context Window
-    - Techniques to increase context length
-        - Better positional encoding (ALiBi)
-        - Relative positional encoding (RoPE)
-        - Sparse Attention
-        - FlashAttention
-        - Multi-Query attention (MQA)
-        - Large RAM GPUs
-    - Large Context Length Models
-        - GPT-4 (32-k)
-        - Claude-2 (100k)
-        - GPT-4-Turbo (128-k)
-        - Claude-2.1 (200k)
-- Challanges with LLMs
-    - Large vs Small Language Models
-    - LLM Production Challenges
-        - Inconsistency
-        - Hallucination
-        - Compliance + privacy
-        - Context length
-            - Lost in the Middle
-        - Data drift
-        - Forward & Backward Compatibility For Prompts
-        - LLM on the edge
-        - Data bottleneck
-    - LLM Research Open Challanges
-        - Reduce and measure hallucinations
-        - Optimize context length
-        - Incorporate other data modalities
-        - Make LLMs faster and cheaper
-        - Design a new model architecture
-        - Develop GPU alternatives
-        - Make agents usable
-        - Improve learning from human preference
-        - Improve the efficiency of the chat interface
-        - Build LLMs for non-English languages
-    - The Perils of Blindly Reusing Pre-trained Language Models
-- LLM Applications
-    - LLMs for Translation
-    - LLMs For Mobile App Developers
-    - LLM Assistants
-    - Retrieval Augmented Generation
-        - Embeddings for Retrival
-        - Evaluating RAGs
-- LLM Watermarking
-- LLM Application Development
-    - Opensource Framworks
-        - Langchain
-        - LlamaIndex
-    - Proprietary Framworks
-        - LLM Studio
-- LLM Courses
-    - deeplearning.ai
-    - LLM bootcamp
-    - Data Science Gems
-    - A Hackers' Guide to Language Models
+## 👉 Pretrained LLMs
 
-## References
+![Pretrained LLMs](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-pretrained-llms.png)
+
 
 ### Opensource LLMs
 
@@ -241,15 +64,19 @@
     
     LLama 1 & 2 opened the floodgates of open source LLMs. MistralAI released the most powerful 7B base LLM remotely inspired by the success of LLama 2. HuggingFace H4 released Zephyr trained on on a mix of publicly available, synthetic datasets using DPO. TsinghuaNLP released the UltraChat dataset, a large-scale, multi-round dialogue dataset. OpenBMB released the UltraFeedback dataset, a large-scale, fine-grained, diverse preference dataset for RLHF and DPO. Huggingface H4 team fine-tuned Zephyr using UltraChat (supervised fine tuning) and UltraFeedback (DPO for alignment). ArgillaIO fixed some data issues and improved on Zephyr to release Notus-7B.
 
-### Prompt Engineering
+## 👉 Prompt Engineering
 
-- https://www.promptingguide.ai/
+![Prompt Engineering](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-prompt-engineering.png)
+
+- [Prompt Engineering Guide](https://www.promptingguide.ai/)
     
     `Prompt Engineering` 
     
     Prompt engineering is a relatively new discipline for developing and optimizing prompts to efficiently use language models (LMs) for a wide variety of applications and research topics. Prompt engineering skills help to better understand the capabilities and limitations of large language models (LLMs).
 
-### Training LLMs
+## 👉 Training LLMs
+
+![Training LLMs](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-training.png)
 
 - [Efficient Deep Learning Optimization Libraries for Large Language Model Training](https://www.linkedin.com/posts/ashishpatel2604_datascience-machinelearning-artificialintelligence-activity-7082215572150587392-SPN-?utm_source=share&utm_medium=member_ios)
     
@@ -357,7 +184,9 @@
     This blog explores alternatives to Reinforcement Learning from Human Feedback (RLHF) for fine-tuning large language models. The alternatives discussed include supervised fine-tuning and direct preference optimization. The blog also provides a hands-on guide to preparing human preference data and using the Transformers Reinforcement Learning library to fine-tune a large language model using direct preference optimization.
     
 
-### Evaluating LLMs
+## 👉 Evaluating LLMs
+
+![Evaluating LLMs](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-evaluating-llms.png)
 
 - [LMFlow Benchmark: An Automatic Evaluation Framework for Open-Source LLMs](https://optimalscale.github.io/LMFlow/blogs/benchmark.html)
     
@@ -402,7 +231,9 @@
     Recommender systems output a ranking list of items. Hit ratio, MRR, Precision, Recall, MAP, NDCG are commonly used metrics to evaluate the performance of recommender systems.
     
 
-### LLMs Deployment Frameworks
+## 👉 LLMs Deployment
+
+![LLMs Deployment](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-deployment.png)
 
 - [Model Serving Frameworks for 2023](https://www.linkedin.com/posts/aboniasojasingarayar_llm-llmops-mlops-activity-7117777649896210432-IA5B?utm_source=share&utm_medium=member_ios)
     
@@ -511,7 +342,11 @@
     `LLM` `Semantic Caching` `LangChain` `Llama Index`
     
     GPTCache is a semantic cache for LLMs that helps reduce the cost and latency of LLM API calls. It uses embedding algorithms to convert queries into embeddings and uses a vector store for similarity search on these embeddings. This allows GPTCache to identify and retrieve similar or related queries from the cache storage, thereby increasing cache hit probability and enhancing overall caching efficiency.
-    
+
+
+## 👉 LLMs Inference Optimisation
+
+![LLMs Inference Optimisation](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-quantisation.png)
 
 ### LLM Quantization
 
@@ -557,8 +392,9 @@
     
     Cerebras Systems has released a cleaned and de-duplicated version of the RedPajama Dataset, reducing its size by 49%. Additionally, RedPajama has released a model family of 7B size, including chat, instruction fine-tuned, and base models. The instruction fine-tuned model shows promising performance on the HELM benchmark.
     
+## 👉 LLMs with Large Context Window
 
-### LLMs with Large Context Window
+![LLMs with Large Context Window](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-large-context.png)
 
 - [How to use 100K context window in LLMs](https://blog.gopenai.com/how-to-speed-up-llms-and-use-100k-context-window-all-tricks-in-one-place-ffd40577b4c?gi=01371942e829)
     
@@ -573,7 +409,9 @@
     XGen is a new state-of-the-art 7B LLM with standard dense attention on up to 8K sequence length. It achieves comparable or better results than other open-source LLMs of similar model size on standard NLP benchmarks. XGen also shows benefits on long sequence modeling benchmarks and achieves great results on both text and code tasks.
     
 
-### Challanges with LLMs
+## 👉 Challanges with LLMs
+
+![Challanges with LLMs](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-challanges.png)
 
 - [Challenges in Building LLM Applications for Production](https://home.mlops.community/public/videos/building-llm-applications-for-production?utm_campaign=LLM%20II%20%231&utm_content=LLM%20in%20production%20keynotes%20are%20out%21&utm_medium=email&utm_source=ActiveCampaign)
     
@@ -607,7 +445,12 @@
     `LLM` `Model Size` `Data Quality`
     
     The author discusses the recent trend of focusing on model sizes in the field of LLMs and argues that data quality is often overlooked. They cite the example of phi-1, a 1.3B parameter Transformer-based model by Microsoft, which achieved surprisingly good results. The author concludes that we should pay more attention to data quality when developing LLMs.
-    
+
+
+## 👉 LLM Applications
+
+![LLM Applications](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-applications.png)    
+
 
 ### LLMs for Translation
 
@@ -902,6 +745,10 @@
     
     Researchers from the University of Maryland have found that it is much harder to remove watermarks from AI-generated text than previously thought. This has implications for the use of watermarks to detect machine-generated content, such as spam and harmful content.
     
+## 👉 LLM Application Development
+
+![LLM Application Development](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-app-development.png)
+
 
 ### LLM SaaS Apps
 
@@ -918,7 +765,9 @@
     Verba is an open-source LLM-based search engine that supports a broad spectrum of open-source libraries and custom features. It is easy to install and use, and it does not require users to give away any of their data.
     
 
-### LLM courses
+## 👉 LLM Courses
+
+![LLM Courses](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-courses.png)
 
 - [LLM course recommendations](https://www.linkedin.com/posts/manishsgupta_%3F%3F%3F%3F%3F-%3F%3F%3F%3F%3F%3F-%3F%3F-%3F%3F%3F%3F%3F%3F-activity-7085475843833016320-rvZ9?utm_source=share&utm_medium=member_ios)
     
