@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: If you use this software, please cite it as below.
 title: LLM Primer
 version: 1.0.0
-doi: <INSERT DOI HERE>
+doi: 10.5281/zenodo.10276558
 authors:
   - name: Infocusp Innovations LLP
     email: hetul@infocusp.com
@@ -11,7 +11,7 @@ license: MIT
 homepage: https://github.com/InFoCusp/llm_seminar_series
 repository:
   url: https://github.com/InFoCusp/llm_seminar_series
-  doi: <INSERT DOI HERE>
+  doi: 10.5281/zenodo.10276558
   release: v1.0.0
   date-released: 2023-12-05
   title: LLM Primer v1.0.0
