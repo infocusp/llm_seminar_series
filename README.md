@@ -1,5 +1,8 @@
 # LLM Primer
 
+
+[![DOI](https://zenodo.org/badge/711789813.svg)](https://zenodo.org/doi/10.5281/zenodo.10276557)
+
 A multi-part seminar series on Large Language Models (LLMs).
 
 Interactive version for the list of topics covered: [Large Language Models](https://xmind.works/share/cmFNh1uK?xid=SjTLV1U0)
