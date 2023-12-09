@@ -7,7 +7,7 @@ A multi-part seminar series on Large Language Models (LLMs).
 
 ![Session 1](images/home_page/Large%20Language%20Models.png)
 
-<p align="center"><a href="https://twitter.com/maximelabonne">Large Language Models Full Topic List</a></p>
+<p align="center"><a href="https://xmind.works/share/cmFNh1uK?xid=SjTLV1U0">Large Language Models Full Topic List</a></p>
 
 ## 👉 [Emergence, Fundamentals and Landscape of LLMs]((session_1))
 
