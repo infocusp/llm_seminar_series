@@ -1,5 +1,8 @@
 ## Session 1 - Emergence, Fundamentals and Landscape of LLMs
 
+<p align="center"><img src="../images/home_page/Session%201.png" alt="Sessio 1" style="width:70%;"/></p>
+
+
 Covers important building blocks of what we call an LLM today, where they came from, etc. and then we'll dive into the deep universe that has sprung to life around these LLMs.
 
 This session is aimed to help:
@@ -9,8 +12,6 @@ This session is aimed to help:
 
 ## Outline
 
-![Session 1](../images/home_page/Session%201.png)
-
 * Part 1: [Emergence of LLMs](part_1_emergence_of_llms)
 * Part 2: [Building Blocks of LLMs](part_2_building_blocks_of_llms)
 * Part 3: [Landscape of LLMs](part_3_landscape_of_llms)
@@ -18,8 +19,8 @@ This session is aimed to help:
 ## Session details:
 
 * Date: 6 Dec, 2023
-* Speakers: Hetul Patel, Manish Gupta
-* Location: Inofusp Innovations LLP, Ahmedabad
+* Speakers: [Hetul Patel](https://in.linkedin.com/in/hetul-v-patel), [Manish Gupta](https://in.linkedin.com/in/manish-gupta15)
+* Location: [Infocusp Innovations LLP., Ahmedabad](https://www.infocusp.com/)
 
 ## Material
 
