@@ -9,7 +9,7 @@ A multi-part seminar series on Large Language Models (LLMs).
 
 <p align="center"><a href="https://xmind.works/share/cmFNh1uK?xid=SjTLV1U0">Large Language Models Full Topic List</a></p>
 
-## 👉 [Emergence, Fundamentals and Landscape of LLMs]((session_1))
+## 👉 [Emergence, Fundamentals and Landscape of LLMs](session_1)
 
 Covers important building blocks of what we call an LLM today, where they came from, etc. and then we'll dive into the deep universe that has sprung to life around these LLMs.
 
