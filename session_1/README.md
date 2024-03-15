@@ -1,6 +1,6 @@
-## Session 1 - Emergence, Fundamentals and Landscape of LLMs
+# Session 1 - Emergence, Fundamentals and Landscape of LLMs
 
-<p align="center"><img src="../images/home_page/Session%201.png" alt="Sessio 1" style="width:70%;"/></p>
+<p align="center"><img src="../images/home_page/Session%201.png" alt="Session 1" style="width:70%;"/></p>
 
 
 Covers important building blocks of what we call an LLM today, where they came from, etc. and then we'll dive into the deep universe that has sprung to life around these LLMs.
