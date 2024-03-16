@@ -1,5 +1,8 @@
 # The Emergence of LLMs
 
+**Author:** [Hetul Patel](https://in.linkedin.com/in/hetul-v-patel) | **Published on**: 6 Dec, 2023
+<hr>
+
 
 ```mermaid
 timeline

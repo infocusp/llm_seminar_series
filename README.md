@@ -7,7 +7,7 @@ A multi-part seminar series on Large Language Models (LLMs).
 
 ![Session 1](images/home_page/Large%20Language%20Models.png)
 
-<p align="center"><a href="https://xmind.works/share/cmFNh1uK?xid=SjTLV1U0">Large Language Models Full Topic List</a></p>
+<p align="center">Click here for <a href="https://xmind.works/share/cmFNh1uK?xid=SjTLV1U0">Large Language Models Full Topic List</a></p>
 
 ## ✨ [Emergence, Fundamentals and Landscape of LLMs](session_1)
 
@@ -34,13 +34,11 @@ Explore diverse applications of Large Language Models (LLMs) and the frameworks 
 
 Coming soon...
 
-## ✨ Training and Evaluating LLMs On Custom Datasets
+## ✨ [Training and Evaluating LLMs On Custom Datasets](session_4)
 
 Delve into the intricacies of training and evaluating Large Language Models (LLMs) on your custom datasets. Gain insights into optimizing performance, fine-tuning, and assessing model effectiveness tailored to your specific data.
 
 ![Session 4](images/home_page/Session%204.png)
-
-Coming soon...
 
 ## ✨ Optimizing LLMs For Inference and Deployment Techniques
 
@@ -50,7 +48,7 @@ Learn techniques to optimize Large Language Models (LLMs) for efficient inferenc
 
 Coming soon...
 
-## ✨ Open Challanges With LLMs
+## ✨ Open Challenges With LLMs
 
 Delve into the dichotomy of small vs large LLMs, navigating production challenges, addressing research hurdles, and understanding the perils associated with the utilization of pretrained LLMs. Explore the evolving landscape of challenges within the realm of Large Language Models.
 

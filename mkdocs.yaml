@@ -5,7 +5,7 @@ docs_dir: .
 site_dir: ../site
 theme:
   name: material
-  # logo: assets/icons8-code-64.png
+  logo: images/site/infocusp_logo_blue.png
   palette:
     primary: white
   features:
@@ -22,6 +22,7 @@ theme:
 markdown_extensions:
   - toc:
       permalink: true
+      toc_depth: 3
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -41,6 +42,8 @@ extra_css:
 extra:
   generator: false
   social:
+    - icon: fontawesome/solid/globe
+      link: https://infocusp.com
     - icon: fontawesome/brands/linkedin
       link: https://in.linkedin.com/company/infocusp
     - icon: fontawesome/brands/github
@@ -52,3 +55,5 @@ extra:
 plugins:
   - search
   - same-dir
+  - mkdocs-jupyter:
+      ignore_h1_titles: True

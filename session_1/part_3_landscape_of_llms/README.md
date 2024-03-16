@@ -1,5 +1,8 @@
 # Landscape of LLMs
 
+**Author:** [Hetul Patel](https://in.linkedin.com/in/hetul-v-patel) | **Published on**: 6 Dec, 2023
+<hr>
+
 ![LLM Landscape](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-Main.png)
 
 
@@ -465,9 +468,9 @@
 
 </details>
 
-## Challanges with LLMs
+## Challenges with LLMs
 
-![Challanges with LLMs](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-challanges.png)
+![Challenges with LLMs](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-challenges.png)
 
 <details markdown>
 
