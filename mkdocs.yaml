@@ -1,0 +1,59 @@
+site_name: Large Language Models Seminar Series
+copyright: Copyright &copy; 2024 Infocusp Innovations LLP
+repo_url: https://github.com/InFoCusp/llm_seminar_series
+docs_dir: .
+site_dir: ../site
+theme:
+  name: material
+  logo: images/site/infocusp_logo_blue.png
+  palette:
+    primary: white
+  features:
+    - content.code.copy
+    - navigation.footer    
+    - navigation.tabs
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.share
+    - search.highlight
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences      
+  - admonition
+  - md_in_html
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format  
+extra_css:
+  - stylesheets/extra.css
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/solid/globe
+      link: https://infocusp.com
+    - icon: fontawesome/brands/linkedin
+      link: https://in.linkedin.com/company/infocusp
+    - icon: fontawesome/brands/github
+      link: https://github.com/InFoCusp
+    - icon: fontawesome/brands/instagram
+      link: https://instagram.com/infocuspinnovations
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com/_infocusp
+plugins:
+  - search
+  - same-dir
+  - mkdocs-jupyter:
+      ignore_h1_titles: True

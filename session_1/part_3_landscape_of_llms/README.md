@@ -1,26 +1,20 @@
 # Landscape of LLMs
 
+**Author:** [Hetul Patel](https://in.linkedin.com/in/hetul-v-patel) | **Published on**: 6 Dec, 2023
+<hr>
+
 ![LLM Landscape](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-Main.png)
 
-# Table of Contents
-* [Pretrained LLMs](#-pretrained-llms)
-* [Prompt Engineering](#-prompt-engineering)
-* [Training LLMs](#-training-llms)
-* [Evaluating LLMs](#-evaluating-llms)
-* [LLMs Deployment](#-llms-deployment)
-* [LLMs Inference Optimisation](#-llms-inference-optimisation)
-* [LLMs with Large Context Window](#-llms-with-large-context-window)
-* [Challanges with LLMs](#-challanges-with-llms)
-* [LLM Applications](#-llm-applications)
-* [LLM Application Development](#-llm-application-development)
-* [LLM Courses](#-llm-courses)
 
-## 👉 Pretrained LLMs
+## Pretrained LLMs
 
 ![Pretrained LLMs](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-pretrained-llms.png)
 
-
 ### Opensource LLMs
+
+<details markdown>
+
+<summary>References</summary>
 
 - [Can we stop relying on proprietary LLMs to evaluate open LLMs?](https://www.linkedin.com/posts/danielvanstrien_paper-page-prometheus-inducing-fine-grained-activity-7120763227533139969-ML2K?utm_source=share&utm_medium=member_ios)
     
@@ -76,9 +70,15 @@
     
     LLama 1 & 2 opened the floodgates of open source LLMs. MistralAI released the most powerful 7B base LLM remotely inspired by the success of LLama 2. HuggingFace H4 released Zephyr trained on on a mix of publicly available, synthetic datasets using DPO. TsinghuaNLP released the UltraChat dataset, a large-scale, multi-round dialogue dataset. OpenBMB released the UltraFeedback dataset, a large-scale, fine-grained, diverse preference dataset for RLHF and DPO. Huggingface H4 team fine-tuned Zephyr using UltraChat (supervised fine tuning) and UltraFeedback (DPO for alignment). ArgillaIO fixed some data issues and improved on Zephyr to release Notus-7B.
 
-## 👉 Prompt Engineering
+</details>
+
+## Prompt Engineering
 
 ![Prompt Engineering](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-prompt-engineering.png)
+
+<details markdown>
+
+<summary>References</summary>
 
 - [Prompt Engineering Guide](https://www.promptingguide.ai/)
     
@@ -86,9 +86,15 @@
     
     Prompt engineering is a relatively new discipline for developing and optimizing prompts to efficiently use language models (LMs) for a wide variety of applications and research topics. Prompt engineering skills help to better understand the capabilities and limitations of large language models (LLMs).
 
-## 👉 Training LLMs
+</details>
+
+## Training LLMs
 
 ![Training LLMs](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-training.png)
+
+<details markdown>
+
+<summary>References</summary>
 
 - [Efficient Deep Learning Optimization Libraries for Large Language Model Training](https://www.linkedin.com/posts/ashishpatel2604_datascience-machinelearning-artificialintelligence-activity-7082215572150587392-SPN-?utm_source=share&utm_medium=member_ios)
     
@@ -125,9 +131,14 @@
     `language models` `reinforcement learning` `direct preference optimization`
     
     The paper "Direct Preference Optimization: Your Language Model is Secretly a Reward Model" introduces a novel algorithm that gets rid of the two stages of RL, namely - fitting a reward model, and training a policy to optimize the reward via sampling. This new algorithm, called Direct Preference Optimization (DPO), trains the LLM using a new loss function which encourages it to increase the likelihood of the better completion and decrease the likelihood of the worse completion. DPO has been shown to achieve comparable performance to RL-based methods, but is much simpler to implement and scale.
-    
+
+</details>
 
 ### Supervised Finetuning
+
+<details markdown>
+
+<summary>References</summary>
 
 - [Fine-tuning Llama-2 on your own data](https://www.linkedin.com/posts/alphasignal_llama-2-can-now-be-fine-tuned-on-your-activity-7116422223191576576-ZPb5?utm_source=share&utm_medium=member_ios)
     
@@ -195,10 +206,15 @@
     
     This blog explores alternatives to Reinforcement Learning from Human Feedback (RLHF) for fine-tuning large language models. The alternatives discussed include supervised fine-tuning and direct preference optimization. The blog also provides a hands-on guide to preparing human preference data and using the Transformers Reinforcement Learning library to fine-tune a large language model using direct preference optimization.
     
+</details>
 
-## 👉 Evaluating LLMs
+## Evaluating LLMs
 
 ![Evaluating LLMs](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-evaluating-llms.png)
+
+<details markdown>
+
+<summary>References</summary>
 
 - [LMFlow Benchmark: An Automatic Evaluation Framework for Open-Source LLMs](https://optimalscale.github.io/LMFlow/blogs/benchmark.html)
     
@@ -242,10 +258,17 @@
     
     Recommender systems output a ranking list of items. Hit ratio, MRR, Precision, Recall, MAP, NDCG are commonly used metrics to evaluate the performance of recommender systems.
     
+</details>
 
-## 👉 LLMs Deployment
+
+## LLMs Deployment
 
 ![LLMs Deployment](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-deployment.png)
+
+<details markdown>
+
+<summary>References</summary>
+
 
 - [Model Serving Frameworks for 2023](https://www.linkedin.com/posts/aboniasojasingarayar_llm-llmops-mlops-activity-7117777649896210432-IA5B?utm_source=share&utm_medium=member_ios)
     
@@ -295,8 +318,13 @@
     
     LoRAX is a new kind of LLM inference solution designed to make it cost effective and scalable to serve many fine-tuned models in production at once, conserving precious GPUs by dynamically exchanging in and out fine-tuned LoRA models within a single LLM deployment.
     
+</details>
 
 ### Running LLMs Locally
+
+<details markdown>
+
+<summary>References</summary>
 
 - [Run Large Language Models on Your CPU with Llama.cpp](https://pub.towardsai.net/high-speed-inference-with-llama-cpp-and-vicuna-on-cpu-136d28e7887b)
     
@@ -345,9 +373,15 @@
     `GPU` `CPU` `Linux` `Windows` `Mac` `Llama 2` `gradio UI` `Generative Agents/Apps`
     
     This project enables users to run any Llama 2 model locally with a gradio UI on GPU or CPU from anywhere (Linux/Windows/Mac). It uses `llama2-wrapper` as the local llama2 backend for Generative Agents/Apps.
-    
+
+</details>
 
 ### Semantic Cache for LLMs
+
+<details markdown>
+
+<summary>References</summary>
+
 
 - [GPTCache: Semantic Cache for LLMs](https://github.com/zilliztech/GPTCache/tree/main)
     
@@ -355,12 +389,18 @@
     
     GPTCache is a semantic cache for LLMs that helps reduce the cost and latency of LLM API calls. It uses embedding algorithms to convert queries into embeddings and uses a vector store for similarity search on these embeddings. This allows GPTCache to identify and retrieve similar or related queries from the cache storage, thereby increasing cache hit probability and enhancing overall caching efficiency.
 
+</details>
 
-## 👉 LLMs Inference Optimisation
+## LLMs Inference Optimisation
 
 ![LLMs Inference Optimisation](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-quantisation.png)
 
 ### LLM Quantization
+
+<details markdown>
+
+<summary>References</summary>
+
 
 - **[BitNet: Scaling 1-bit Transformers for Large Language Models](https://arxiv.org/abs/2310.11453)**
     
@@ -404,9 +444,15 @@
     
     Cerebras Systems has released a cleaned and de-duplicated version of the RedPajama Dataset, reducing its size by 49%. Additionally, RedPajama has released a model family of 7B size, including chat, instruction fine-tuned, and base models. The instruction fine-tuned model shows promising performance on the HELM benchmark.
     
-## 👉 LLMs with Large Context Window
+</details>
+
+## LLMs with Large Context Window
 
 ![LLMs with Large Context Window](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-large-context.png)
+
+<details markdown>
+
+<summary>References</summary>
 
 - [How to use 100K context window in LLMs](https://blog.gopenai.com/how-to-speed-up-llms-and-use-100k-context-window-all-tricks-in-one-place-ffd40577b4c?gi=01371942e829)
     
@@ -419,11 +465,16 @@
     `LLM` `NLP` `Machine Learning` `Artificial Intelligence`
     
     XGen is a new state-of-the-art 7B LLM with standard dense attention on up to 8K sequence length. It achieves comparable or better results than other open-source LLMs of similar model size on standard NLP benchmarks. XGen also shows benefits on long sequence modeling benchmarks and achieves great results on both text and code tasks.
-    
 
-## 👉 Challanges with LLMs
+</details>
 
-![Challanges with LLMs](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-challanges.png)
+## Challenges with LLMs
+
+![Challenges with LLMs](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-challenges.png)
+
+<details markdown>
+
+<summary>References</summary>
 
 - [Challenges in Building LLM Applications for Production](https://home.mlops.community/public/videos/building-llm-applications-for-production?utm_campaign=LLM%20II%20%231&utm_content=LLM%20in%20production%20keynotes%20are%20out%21&utm_medium=email&utm_source=ActiveCampaign)
     
@@ -443,8 +494,13 @@
     
     Reusing pre-trained language models without careful consideration can lead to negative impacts on downstream tasks due to issues such as over-training, under-training, or over-parameterization. WeightWatchers is an open-source diagnostic tool that can be used to analyze DNNs without access to training or test data, helping to identify potential issues before deployment.
     
+</details>
 
 ### Large vs Small Langage Models
+
+<details markdown>
+
+<summary>References</summary>
 
 - [Small language models can outperform LLMs in specific domains](https://www.linkedin.com/posts/sebastien-bubeck-6b558a1a5_textbooks-are-all-you-need-activity-7077091292077330433-w2vZ?utm_source=share&utm_medium=member_ios)
     
@@ -458,13 +514,17 @@
     
     The author discusses the recent trend of focusing on model sizes in the field of LLMs and argues that data quality is often overlooked. They cite the example of phi-1, a 1.3B parameter Transformer-based model by Microsoft, which achieved surprisingly good results. The author concludes that we should pay more attention to data quality when developing LLMs.
 
+</details>
 
-## 👉 LLM Applications
+## LLM Applications
 
 ![LLM Applications](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-applications.png)    
 
-
 ### LLMs for Translation
+
+<details markdown>
+
+<summary>References</summary>
 
 - [ParroT: Enhancing and Regulating Translation Abilities in Chatbots with Open-Source LLMs](https://www.linkedin.com/posts/ricky-costa-nlp_github-wxjiaoparrot-the-parrot-framework-activity-7095024621321662464-5HWn?utm_source=share&utm_medium=member_ios)
     
@@ -472,8 +532,13 @@
     
     The ParroT framework enhances and regulates the translation abilities of chatbots by leveraging open-source LLMs and human-written translation and evaluation data.
     
+</details>
 
 ### LLMs For Mobile App Developers
+
+<details markdown>
+
+<summary>References</summary>
 
 - [Hugging Face releases tools for Swift developers to incorporate language models in their apps](https://www.linkedin.com/posts/sahar-mor_a-big-step-forward-for-on-device-llms-activity-7095782887811125248-H5f2?utm_source=share&utm_medium=member_ios)
     
@@ -481,8 +546,13 @@
     
     Hugging Face has released a package and tools to help Swift developers incorporate language models in their apps, including swift-transformers, swift-chat, transformers-to-coreml, and ready-to-use LLMs such as Llama 2 7B and Falcon 7B.
     
+</details>
 
 ### LLM Assistants
+
+<details markdown>
+
+<summary>References</summary>
 
 - [Comparing coding assistants](https://www.linkedin.com/posts/kalyanksnlp_llms-opensource-nlproc-activity-7077128568891207680-umhc?utm_source=share&utm_medium=member_ios)
     
@@ -520,8 +590,13 @@
     
     The article provides a comprehensive overview of LLM agents, including their capabilities, limitations, and potential applications. It also discusses the challenges involved in developing and deploying LLM agents, and the ethical considerations that need to be taken into account.
     
+</details>
 
 ### Retrieval Augmented Generation
+
+<details markdown>
+
+<summary>References</summary>
 
 - [RAG & Enterprise: A Match Made in Heaven](https://www.linkedin.com/posts/prithivirajdamodaran_usecase-retrieval-augmented-generation-for-activity-7076430925122691072-nYMj?utm_source=share&utm_medium=member_ios)
     
@@ -709,8 +784,13 @@
     
     This article discusses 8 key considerations for building production-grade LLM apps over your data. These considerations include using different chunks for retrieval and synthesis, using embeddings that live in a different latent space than the raw text, dynamically loading/updating the data, designing the pipeline for scalability, storing data in a hierarchical fashion, using robust data pipelines, and using hybrid search for entity lookup.
     
+</details>
 
 ### Embeddings for Retrieval
+
+<details markdown>
+
+<summary>References</summary>
 
 - [How to use Aleph Alpha's semantic embeddings](https://python.langchain.com/docs/modules/data_connection/text_embedding/integrations/aleph_alpha)
     
@@ -730,17 +810,27 @@
     
     This article introduces a new way to generate sentence embeddings using LLM. The method is based on the HuggingFaceEmbeddings integration, which allows users to use SentenceTransformers embeddings directly. The article also provides an example of how to use the new method.
     
+</details>
 
 ### Evaluating RAGs
+
+<details markdown>
+
+<summary>References</summary>
 
 - [Ragas: A Framework for Evaluating Retrieval Augmented Generation Pipelines](https://github.com/explodinggradients/ragas)
     
     `LLM` `RAG` `NLP` `Machine Learning`
     
     Ragas is a framework that helps you evaluate your Retrieval Augmented Generation (RAG) pipelines. It provides you with the tools based on the latest research for evaluating LLM-generated text to give you insights about your RAG pipeline. Ragas can be integrated with your CI/CD to provide continuous checks to ensure performance.
-    
+
+</details>
 
 ### Integrating LLMs with Knowledge Graphs
+
+<details markdown>
+
+<summary>References</summary>
 
 - [LLMs and Knowledge Graphs](https://www.linkedin.com/posts/llamaindex_google-colaboratory-activity-7101315253833011200-zEOX?utm_source=share&utm_medium=member_ios)
     
@@ -748,8 +838,13 @@
     
     This article discusses the advantages and disadvantages of using Knowledge Graphs (KGs) with LLMs. It also provides a link to a Colab notebook and a video tutorial on the topic.
     
+</details>
 
 ### LLM Watermarking
+
+<details markdown>
+
+<summary>References</summary>
 
 - [AI generated text? New research shows watermark removal is harder than one thinks!](https://www.linkedin.com/posts/srijankr_ai-activity-7076757082720403456-eVjm?utm_source=share&utm_medium=member_ios)
     
@@ -757,12 +852,18 @@
     
     Researchers from the University of Maryland have found that it is much harder to remove watermarks from AI-generated text than previously thought. This has implications for the use of watermarks to detect machine-generated content, such as spam and harmful content.
     
-## 👉 LLM Application Development
+</details>
+
+## LLM Application Development
 
 ![LLM Application Development](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-app-development.png)
 
 
 ### LLM SaaS Apps
+
+<details markdown>
+
+<summary>References</summary>
 
 - [Introducing LLM Studio: A Powerful Platform for Building and Deploying Language Models](https://www.rungalileo.io/blog/announcing-llm-studio)
     
@@ -775,14 +876,21 @@
     `LLM` `Open Source` `Search Engine`
     
     Verba is an open-source LLM-based search engine that supports a broad spectrum of open-source libraries and custom features. It is easy to install and use, and it does not require users to give away any of their data.
-    
 
-## 👉 LLM Courses
+</details>
+
+## LLM Courses
 
 ![LLM Courses](./../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-courses.png)
+
+<details markdown>
+
+<summary>References</summary>
 
 - [LLM course recommendations](https://www.linkedin.com/posts/manishsgupta_%3F%3F%3F%3F%3F-%3F%3F%3F%3F%3F%3F-%3F%3F-%3F%3F%3F%3F%3F%3F-activity-7085475843833016320-rvZ9?utm_source=share&utm_medium=member_ios)
     
     `LLM` `NLP` `AI`
     
     The article recommends some short courses on LLM. The author also recommends some YouTube channels and videos on LLM.
+
+</details>
