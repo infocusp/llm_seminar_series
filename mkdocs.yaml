@@ -10,8 +10,7 @@ theme:
     primary: white
   features:
     - content.code.copy
-    - navigation.footer    
-    - navigation.tabs
+    - navigation.footer
     - navigation.expand
     - navigation.path
     - navigation.indexes
@@ -55,6 +54,7 @@ extra:
 plugins:
   - search
   - same-dir
+  - awesome-pages
   - mkdocs-jupyter:
       ignore_h1_titles: True
       include: ["*.ipynb"]
