@@ -3,8 +3,6 @@
 <p align="center">A multi-part seminar series on Large Language Models (LLMs).<br>
 <a href="https://infocusp.github.io/llm_seminar_series">🌐 Website</a> 
 | <a href="https://xmind.works/share/cmFNh1uK?xid=SjTLV1U0">🧠 LLM Full Mind Map</a>
-| <a href="/OUR_MISSION/">🎯 Our Mission</a>
-
 <br><br>
 <a href="https://zenodo.org/doi/10.5281/zenodo.10276557"><img src="https://zenodo.org/badge/711789813.svg"></img></a>
 </p>
@@ -67,7 +65,7 @@ Coming soon...
 
 ## 💁 Contributing
 
-We are on a generous mission to tackle the daunting LLM FOMO. We need your support for technical articles and related video sessions. See [our mission](OUR_MISSION.md) for more details.
+We are on a generous mission to tackle the daunting FOMO in the LLM race. We need your support for technical articles and related video sessions. See [our mission](OUR_MISSION.md) for more details.
 
 For detailed information on how to contribute, see [contribution guide](CONTRIBUTION.md).
 
