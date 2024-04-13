@@ -15,7 +15,7 @@ Traditionally, keeping up with every new method can be impractical. We propose a
 
 Despite the constant stream of new methods, they often fall under existing categories. By organizing this information hierarchically, understanding new methods and their purpose becomes significantly easier.
 
-For example, RLHF gained popularity after ChatGPT. Recently other terms such PPO, DPO, and ORP have also emerged. Can you guess their purpose?
+For example, RLHF gained popularity after ChatGPT. Recently other terms such PPO, DPO, and ORPO have also emerged. Can you guess their purpose?
 
 The mind map below illustrates these methods as advancements upon each other for fine-tuning LLMs to human preferences.
 
