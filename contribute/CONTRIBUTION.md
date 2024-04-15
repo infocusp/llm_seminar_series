@@ -57,6 +57,10 @@ Seminar Series. Make sure to read it before opening a PR.
 * Maintaining a consistent style across all the articles provides a good reading experience to our readers and often reduces review time.
 * We have provided code and text style guides [separately here](STYLE_GUIDES.md). 
 * You can refer them when crafting that perfect article.
+* Please use the following commands,
+    * Install ruff: `pip install -r requirements.txt`
+    * Run auto formatter: `ruff format`
+    * Run linter and fix remaining issues manually `ruff check`
 
 ### Step 7: Run the website locally
 

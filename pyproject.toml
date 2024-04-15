@@ -1,0 +1,21 @@
+[tool.ruff]
+lint.select = [
+  "D",    # pydocstyle
+  "E",    # pycodestyle
+  "F",    # pyflakes
+  "I",    # isort
+  "T201", # print
+  "E501"  # line-too-long
+]
+# Set the maximum line length to 79.
+line-length = 79
+
+# TODO(hetul): Fix the formatting and do not exclude this dir.
+exclude = ["./session_4/part_2_finetuning_lms_to_human_preferences/mingpt/*"]
+
+# Ignore import violations in all `__init__.py` files and missing docstring.
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402", "F401", "F403", "F811", "D104"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
