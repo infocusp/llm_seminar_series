@@ -1,0 +1,1921 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../part_2_building_blocks_of_llms/">
+      
+      
+        <link rel="next" href="../../session_4/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Landscape of LLMs - Large Language Models Seminar Series</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#landscape-of-llms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Large Language Models Seminar Series" class="md-header__button md-logo" aria-label="Large Language Models Seminar Series" data-md-component="logo">
+      
+  <img src="../../images/site/infocusp_logo_blue.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Large Language Models Seminar Series
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Landscape of LLMs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/InFoCusp/llm_seminar_series" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Large Language Models Seminar Series" class="md-nav__button md-logo" aria-label="Large Language Models Seminar Series" data-md-component="logo">
+      
+  <img src="../../images/site/infocusp_logo_blue.png" alt="logo">
+
+    </a>
+    Large Language Models Seminar Series
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/InFoCusp/llm_seminar_series" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Session 1
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Session 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../part_1_emergence_of_llms/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Part 1 emergence of llms
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Part 1 emergence of llms
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../part_2_building_blocks_of_llms/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Part 2 building blocks of llms
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Part 2 building blocks of llms
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  <span class="md-ellipsis">
+    Part 3 landscape of llms
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Part 3 landscape of llms
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../session_4/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Session 4
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Session 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Part 2 finetuning lms to human preferences
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Part 2 finetuning lms to human preferences
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../session_4/part_2_finetuning_lms_to_human_preferences/RLHF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RLHF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contribute
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Contribute
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contribute/OUR_MISSION/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Our mission
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contribute/CONTRIBUTION/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contribution guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contribute/STYLE_GUIDES/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Style guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pretrained-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pretrained LLMs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pretrained LLMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opensource-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opensource LLMs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Engineering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training LLMs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Training LLMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supervised-finetuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supervised Finetuning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluating-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluating LLMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llms-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLMs Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLMs Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-llms-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running LLMs Locally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-cache-for-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic Cache for LLMs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llms-inference-optimisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLMs Inference Optimisation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLMs Inference Optimisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm-quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Quantization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llms-with-large-context-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLMs with Large Context Window
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges-with-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenges with LLMs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenges with LLMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#large-vs-small-langage-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Large vs Small Langage Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLM Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llms-for-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLMs for Translation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llms-for-mobile-app-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLMs For Mobile App Developers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-assistants" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Assistants
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieval-augmented-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieval Augmented Generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embeddings-for-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embeddings for Retrieval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluating-rags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluating RAGs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrating-llms-with-knowledge-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrating LLMs with Knowledge Graphs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-watermarking" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Watermarking
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-application-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Application Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLM Application Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm-saas-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM SaaS Apps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-courses" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Courses
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="landscape-of-llms">Landscape of LLMs<a class="headerlink" href="#landscape-of-llms" title="Permanent link">&para;</a></h1>
+<p><strong>Author:</strong> <a href="https://in.linkedin.com/in/hetul-v-patel">Hetul Patel</a> | <strong>Published on</strong>: 6 Dec, 2023</p>
+<hr>
+
+<p><img alt="LLM Landscape" src="../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-Main.png" /></p>
+<h2 id="pretrained-llms">Pretrained LLMs<a class="headerlink" href="#pretrained-llms" title="Permanent link">&para;</a></h2>
+<p><img alt="Pretrained LLMs" src="../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-pretrained-llms.png" /></p>
+<h3 id="opensource-llms">Opensource LLMs<a class="headerlink" href="#opensource-llms" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/danielvanstrien_paper-page-prometheus-inducing-fine-grained-activity-7120763227533139969-ML2K?utm_source=share&amp;utm_medium=member_ios">Can we stop relying on proprietary LLMs to evaluate open LLMs?</a></p>
+<p><code>Evaluation</code> <code>Open LLM</code> <code>Proprietary LLM</code> <code>GPT-4</code> <code>Feedback Collection dataset</code> <code>Prometheus model</code></p>
+<p>Using proprietary LLMs like GPT-4 to evaluate open LLMs has limitations. The Feedback Collection dataset and the Prometheus model aim to close the gap between open and closed models by providing a way to evaluate open LLMs without relying on proprietary models.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/hagaylupesko_mpt-30b-raising-the-bar-for-open-source-activity-7077673886682603520-O0av?utm_source=share&amp;utm_medium=member_ios">MosaicML releases MPT-30B, a 30 billion parameter LLM that outperforms GPT-3</a></p>
+<p><code>LLM</code> <code>Open Source</code> <code>Machine Learning</code> <code>Artificial Intelligence</code></p>
+<p>MosaicML has released MPT-30B, a 30 billion parameter LLM that outperforms the original GPT-3 175 billion parameter model. It is fully open source for commercial use and comes with two fine-tuned variants: MPT-30B-Instruct and MPT-30B-Chat. MPT-30B-Chat is available to play with on HuggingFace, powered by MosaicML Inference. If you want to start using MPT-30B in production, you can customize and deploy it using MosaicML Training and MosaicML Inference.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/yampeleg_the-first-model-to-beat-100-of-chatgpt-35-activity-7081170084253040640-zM7t?utm_source=share&amp;utm_medium=member_ios">OpenChat Surpasses ChatGPT Performance With Open-Source Model</a></p>
+<p><code>LLM</code> <code>OpenAI</code> <code>ChatGPT</code> <code>NLP</code> <code>Machine Learning</code></p>
+<p>OpenChat has developed a new language model, Orca, that outperforms ChatGPT on the Vicuna benchmark. Orca was trained on a smaller dataset than ChatGPT, but achieved better performance by using a more efficient training method. OpenChat has made Orca open-source, so that other researchers can build on its success.</p>
+</li>
+<li>
+<p><a href="https://magazine.sebastianraschka.com/p/ahead-of-ai-11-new-foundation-models?utm_campaign=post&amp;utm_medium=web">The Latest Advancements in Large Language Models: Unveiling Llama 2, Code Llama, and More</a></p>
+<p><code>LLM</code> <code>Llama 2</code> <code>Code Llama</code> <code>GPT-4</code> <code>OpenAI</code> <code>Finetuning</code> <code>Transformer-based LLMs</code> <code>NeurIPS LLM Efficiency Challenge</code></p>
+<p>The article discusses the latest advancements in large language models (LLMs), including the release of Meta's Llama 2 and Code Llama models, the leaked GPT-4 model details, OpenAI's new finetuning API, and the NeurIPS LLM Efficiency Challenge. It provides a comprehensive overview of the key features, capabilities, and potential applications of these models, while also highlighting ongoing challenges and debates in the field of LLMs.</p>
+</li>
+<li>
+<p><a href="https://mistral.ai/news/announcing-mistral-7b/">Announcing Mistral 7B: The Most Powerful Language Model For Its Size</a></p>
+<p><code>language-models</code> <code>machine-learning</code> <code>artificial-intelligence</code></p>
+<p>The Mistral AI team has released Mistral 7B, a 7.3B parameter language model that outperforms Llama 2 13B on all metrics. It is easy to fine-tune on any task and is released under the Apache 2.0 license.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/ed-beeching-3553b468_we-will-soon-release-the-hugging-face-llm-activity-7117524096623484929-i6Pa?utm_source=share&amp;utm_medium=member_ios">Hugging Face Unveils Zephyr-7b: A State-of-the-Art 7B Chatbot</a></p>
+<p><code>LLM</code> <code>Chatbot</code> <code>Natural Language Processing</code> <code>Artificial Intelligence</code></p>
+<p>Hugging Face has released Zephyr-7b, a 7B chatbot that outperforms other models in its class on the MT Bench and Open LLM Leaderboard. The model was trained using a combination of instruction fine-tuning and Direct Preference Optimization on publicly available datasets. It is available to try out on the Hugging Face website.</p>
+</li>
+<li>
+<p><a href="https://levelup.gitconnected.com/no-gpu-ok-this-mini-but-decent-language-model-can-run-on-your-obsolete-computer-540abf0e2b5b">LaMini-LM: Can Small Language Models Compete with Large Ones?</a></p>
+<p><code>language models</code> <code>parameter scale</code> <code>computational requirements</code> <code>LaMini-LM</code> <code>distilled instructions</code></p>
+<p>LaMini-LM is a small language model with a huge amount of distilled instructions. It is designed to achieve impressive results with a smaller model locally. In this article, we will delve into the details of LaMini-LM and see how tiny computational requirements the model asks for.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/sanyambhutani_fully-open-source-llama-13b-is-here-activity-7076550805570355201-RXhq?utm_source=share&amp;utm_medium=member_ios">Open Source LLaMA 13B Released with Full Commercial Usage Rights</a></p>
+<p><code>Open Source LLaMA</code> <code>RedPajama Dataset</code> <code>SlimPajama Dataset</code> <code>Code Generation</code> <code>Commercial Usage</code> <code>Energy Efficiency</code></p>
+<p>OpenLM research has released a fully open source version of the LLaMA 13B model, trained on the RedPajama dataset. The model weights are available in both Jax and PyTorch. The model is not ideal for code generation due to its treatment of empty spaces, but it remains one of the best open source models for building on top of. The authors are considering training future releases on the SlimPajama dataset, which is a cleaned version of the RedPajama dataset with 49% smaller size.</p>
+</li>
+<li>
+<p><a href="https://argilla.io/blog/notus7b/">Meet Notus-7B: Data Curation and Open Science go a long way in shaping AI's future</a></p>
+<p><code>Open Source LLM</code> <code>RLHF</code> <code>DPO</code></p>
+<p>LLama 1 &amp; 2 opened the floodgates of open source LLMs. MistralAI released the most powerful 7B base LLM remotely inspired by the success of LLama 2. HuggingFace H4 released Zephyr trained on on a mix of publicly available, synthetic datasets using DPO. TsinghuaNLP released the UltraChat dataset, a large-scale, multi-round dialogue dataset. OpenBMB released the UltraFeedback dataset, a large-scale, fine-grained, diverse preference dataset for RLHF and DPO. Huggingface H4 team fine-tuned Zephyr using UltraChat (supervised fine tuning) and UltraFeedback (DPO for alignment). ArgillaIO fixed some data issues and improved on Zephyr to release Notus-7B.</p>
+</li>
+</ul>
+</details>
+<h2 id="prompt-engineering">Prompt Engineering<a class="headerlink" href="#prompt-engineering" title="Permanent link">&para;</a></h2>
+<p><img alt="Prompt Engineering" src="../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-prompt-engineering.png" /></p>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.promptingguide.ai/">Prompt Engineering Guide</a></p>
+<p><code>Prompt Engineering</code> </p>
+<p>Prompt engineering is a relatively new discipline for developing and optimizing prompts to efficiently use language models (LMs) for a wide variety of applications and research topics. Prompt engineering skills help to better understand the capabilities and limitations of large language models (LLMs).</p>
+</li>
+</ul>
+</details>
+<h2 id="training-llms">Training LLMs<a class="headerlink" href="#training-llms" title="Permanent link">&para;</a></h2>
+<p><img alt="Training LLMs" src="../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-training.png" /></p>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/ashishpatel2604_datascience-machinelearning-artificialintelligence-activity-7082215572150587392-SPN-?utm_source=share&amp;utm_medium=member_ios">Efficient Deep Learning Optimization Libraries for Large Language Model Training</a></p>
+<p><code>DeepSpeed</code> <code>Megatron-DeepSpeed</code> <code>FairScale</code> <code>Megatron-LM</code> <code>Colossal-AI</code> <code>BMTrain</code> <code>Mesh TensorFlow</code> <code>max text</code> <code>Alpa</code> <code>GPT-NeoX</code></p>
+<p>This article provides an overview of various deep learning optimization libraries that can simplify and optimize the training process for large language models. These libraries offer features such as distributed training, model parallelism, and efficient training algorithms, enabling researchers and practitioners to achieve better results with less effort.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/bhavsarpratik_fine-tuning-llms-best-practices-and-when-activity-7077291574581166081-_FBV?utm_source=share&amp;utm_medium=member_ios">LLM Training Techniques</a></p>
+<p><code>Training vs Prompting Engineering</code> <code>Task Diversity for OOD Robustness</code> <code>Self-Instruction for Dataset Generation</code> <code>Self-Consistency for Higher Performance</code> <code>Evaluation</code></p>
+<p>This MLOps Community podcast with Mark Huang discusses various LLM training techniques, including training vs prompting engineering, task diversity for OOD robustness, self-instruction for dataset generation, self-consistency for higher performance, and evaluation.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/prithivirajdamodaran_copy-my-0-annotation-rlhf-strategy-activity-7081134400792322048-BiIQ?utm_source=share&amp;utm_medium=member_ios">Deploying RLHF with 0 Annotations: A Case Study</a></p>
+<p><code>real-world case-study</code> <code>reducing manual effort</code> <code>RLHF</code> <code>translation quality</code> <code>reward model</code> <code>user-designated pair</code> <code>regression model</code> <code>Allen AI's library RL4LMs</code> <code>T5/Flan-T5</code> <code>HF Trainer</code> <code>Sentence Transformers Cross-Encoders</code></p>
+<p>This article presents a real-world case study of deploying RLHF with 0 annotations. It describes the challenges faced by a large translation company in SE Asia, and how RLHF was used to reduce manual effort in producing domain-specific vocabulary and robotic translations. The article also discusses the tools and libraries used, and provides a key takeaway for readers.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/ashishpatel2604_llms-data-analytics-activity-7079043798378422272-SpTX?utm_source=share&amp;utm_medium=member_ios">X-LLM: A Framework for Training Multimodal Language Models</a></p>
+<p><code>Multimodal Language Models</code> <code>X-LLM</code> <code>Image Captioning</code> <code>Text-to-Speech</code> <code>Multimodal Question Answering</code></p>
+<p>The paper proposes a new framework, X-LLM, for training multimodal language models. X-LLM consists of three main components: single-modal encoders, X2L interfaces, and a large language model (LLM). The authors evaluate X-LLM on a variety of tasks and show that it achieves state-of-the-art results.</p>
+</li>
+<li>
+<p><a href="https://github.com/huggingface/trl">TRL: A Full-Stack Transformer Language Model with Reinforcement Learning</a></p>
+<p><code>Reinforcement Learning</code> <code>Transformer Language Models</code> <code>Supervised Fine-tuning</code> <code>Reward Modeling</code> <code>Proximal Policy Optimization</code></p>
+<p>TRL is a full-stack library that provides tools for training transformer language models and stable diffusion models with Reinforcement Learning. It is built on top of the transformers library by 🤗 Hugging Face and supports most decoder and encoder-decoder architectures.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/yoelzeldes_to-get-llms-as-good-as-openais-gpt-4-is-activity-7078958558519656451-N6Wo?utm_source=share&amp;utm_medium=member_ios">Is Reinforcement Learning Really Necessary for Large Language Models?</a></p>
+<p><code>language models</code> <code>reinforcement learning</code> <code>direct preference optimization</code></p>
+<p>The paper "Direct Preference Optimization: Your Language Model is Secretly a Reward Model" introduces a novel algorithm that gets rid of the two stages of RL, namely - fitting a reward model, and training a policy to optimize the reward via sampling. This new algorithm, called Direct Preference Optimization (DPO), trains the LLM using a new loss function which encourages it to increase the likelihood of the better completion and decrease the likelihood of the worse completion. DPO has been shown to achieve comparable performance to RL-based methods, but is much simpler to implement and scale.</p>
+</li>
+</ul>
+</details>
+<h3 id="supervised-finetuning">Supervised Finetuning<a class="headerlink" href="#supervised-finetuning" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/alphasignal_llama-2-can-now-be-fine-tuned-on-your-activity-7116422223191576576-ZPb5?utm_source=share&amp;utm_medium=member_ios">Fine-tuning Llama-2 on your own data</a></p>
+<p><code>LLM</code> <code>Fine-tuning</code> <code>Natural Language Processing</code></p>
+<p>The new script allows for fine-tuning Llama-2 on your own data in just a few lines of code. It handles single/multi-gpu and can even be used to train the 70B model on a single A100 GPU by leveraging 4bit.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/llamaindex_shunyu-yao-on-x-activity-7117924606144901120-Si5v?utm_source=share&amp;utm_medium=member_ios">Fine-tuning LLMs for specific tasks</a></p>
+<p><code>LLM</code> <code>fine-tuning</code> <code>performance</code></p>
+<p>The author of the ReAct paper explores the effects of fine-tuning LLMs on specific tasks. They found that fine-tuning significantly improves performance when using the LLM as an agent. The key is to fine-tune each module to tailor it to specific tasks.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/prithivirajdamodaran_%3F%3F%3F%3F-%3F%3F%3F%3F%3F%3F%3F%3F%3F-%3F%3F%3F%3F%3F%3F-activity-7111673119831937024-3Ffu?utm_source=share&amp;utm_medium=member_ios">A discussion on various LLM fine-tuning techniques</a></p>
+<p><code>lora</code> <code>adapter</code> <code>prompt tuning</code> <code>rl based policy finetuning</code></p>
+<p>The post discusses various LLM fine-tuning techniques. It covers LORA, adapters, prompt tuning and RL based policy finetuning. The discussion revolves around the advantages and disadvantages of each technique and the scenarios where they are most suitable.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/younes-belkada-b1a903145_recently-mistral-7b-has-been-released-to-activity-7117593843826339840-aPO2?utm_source=share&amp;utm_medium=member_ios">Fine-tuning Mistral-7b with QLoRA on Google Colab</a></p>
+<p><code>LLM</code> <code>Mistral-7b</code> <code>QLoRA</code> <code>Hugging Face</code> <code>TRL</code> <code>PEFT</code></p>
+<p>The article describes how to fine-tune the Mistral-7b language model using QLoRA on Google Colab. This can be done using the TRL and PEFT tools from the Hugging Face ecosystem. The article also includes links to the Google Colab notebook and a GitHub thread with more information.</p>
+</li>
+<li>
+<p><a href="https://twitter.com/Swarooprm7/status/1669610968165523457">Instruction-tuning 101</a></p>
+<p><code>InstructGPT</code> <code>T0</code> <code>The Turking Test</code> <code>FLAN</code> <code>Natural Instructions</code></p>
+<p>Instruction-tuning is a method for improving the performance of language models on a given task by providing them with additional instructions. This can be done by either fine-tuning the model on a dataset of instructions or by using a pre-trained model and providing it with instructions at inference time. Instruction-tuning has been shown to be effective for a variety of tasks, including text summarization, question answering, and machine translation.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/llamaindex_we-did-a-complete-survey-of-llama2-chat-7b-activity-7123113269271138304-FPoO">LLM Reasoning Capabilities Improve with Increased Parameters</a></p>
+<p><code>reasoning</code> <code>structured outputs</code> <code>fine-tuning</code></p>
+<p>A survey of llama2-chat models shows that reasoning capabilities improve as the number of parameters increases. However, structured outputs remain a challenge. This suggests that fine-tuning for better structured data extraction could potentially help.</p>
+</li>
+<li>
+<p><a href="https://gpt-index.readthedocs.io/en/latest/end_to_end_tutorials/finetuning.html">Finetuning Overview</a></p>
+<p><code>Finetuning</code> <code>In-context learning</code> <code>Retrieval augmentation</code> <code>Embedding finetuning</code> <code>LLM finetuning</code> <code>LlamaIndex integrations</code></p>
+<p>Finetuning a model involves updating the model itself over a set of data to improve the model in various ways. This can include improving the quality of outputs, reducing hallucinations, memorizing more data holistically, and reducing latency/cost. The core of our toolkit revolves around in-context learning / retrieval augmentation, which involves using the models in inference mode and not training the models themselves. While finetuning can be also used to “augment” a model with external data, finetuning can complement retrieval augmentation in a variety of ways.</p>
+</li>
+<li>
+<p><a href="https://txt.cohere.com/tfew-finetuning/">T-Few Finetuning: Efficient Training and Scalable Serving of Large Language Models</a></p>
+<p><code>large language models</code> <code>finetuning</code> <code>T-Few</code> <code>training efficiency</code> <code>serving scalability</code></p>
+<p>T-Few finetuning is a technique that selectively updates only a fraction of the model's weights, thus reducing training time and computational resources. It also enables model stacking, which allows for the concurrent inference of multiple finetunes, maximizing GPU utilization and improving serving scalability.</p>
+</li>
+<li>
+<p><a href="https://medium.com/llamaindex-blog/fine-tuning-embeddings-for-rag-with-synthetic-data-e534409a3971">How to Fine-tune Llama 2 Embeddings for Better Retrieval Performance</a></p>
+<p><code>LLM</code> <code>RAG</code> <code>Embedding Finetuning</code> <code>LlamaIndex</code></p>
+<p>This article provides a step-by-step guide on how to fine-tune Llama 2 embeddings for better retrieval performance in RAG systems. The guide includes instructions on how to generate training data, fine-tune the embedding model, and evaluate the performance of the fine-tuned model.</p>
+</li>
+<li>
+<p><a href="https://github.com/allenai/RL4LMs">RL4LMs: A Modular RL Library for Fine-Tuning Language Models to Human Preferences</a></p>
+<p><code>language models</code> <code>reinforcement learning</code> <code>natural language processing</code></p>
+<p>RL4LMs is a modular RL library for fine-tuning language models to human preferences. It provides easily customizable building blocks for training language models, including implementations of on-policy algorithms, reward functions, metrics, datasets, and LM-based actor-critic policies.</p>
+</li>
+<li>
+<p><a href="https://argilla.io/blog/mantisnlp-rlhf-part-1">Exploring Alternatives to RLHF for Fine-Tuning Large Language Models</a></p>
+<p><code>Large Language Models</code> <code>Supervised Fine-Tuning</code> <code>Reinforcement Learning from Human Feedback</code> <code>Direct Preference Optimization</code> <code>Chain of Hindsight</code></p>
+<p>This blog explores alternatives to Reinforcement Learning from Human Feedback (RLHF) for fine-tuning large language models. The alternatives discussed include supervised fine-tuning and direct preference optimization. The blog also provides a hands-on guide to preparing human preference data and using the Transformers Reinforcement Learning library to fine-tune a large language model using direct preference optimization.</p>
+</li>
+</ul>
+</details>
+<h2 id="evaluating-llms">Evaluating LLMs<a class="headerlink" href="#evaluating-llms" title="Permanent link">&para;</a></h2>
+<p><img alt="Evaluating LLMs" src="../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-evaluating-llms.png" /></p>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://optimalscale.github.io/LMFlow/blogs/benchmark.html">LMFlow Benchmark: An Automatic Evaluation Framework for Open-Source LLMs</a></p>
+<p><code>LLM Evaluation</code> <code>Chatbot Arena</code> <code>GPT-4</code> <code>LMFlow Benchmark</code></p>
+<p>The paper introduces LMFlow benchmark, a new benchmark which provides a cheap and easy-to-use evaluation framework that can help reflect different aspects of LLMs.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/deshwalmahesh_nlp-llm-evaluation-activity-7123163857698643969-TBjZ">Evaluating LLM Performance</a></p>
+<p><code>LLM Evaluation</code> <code>RAG</code> <code>Hallucinations</code> <code>Metrics</code></p>
+<p>This article discusses various techniques for evaluating LLM performance, including hallucination detection and metrics-based approaches. It also provides a framework for optimizing LLM performance using RAG and fine-tuning.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/bhavsarpratik_llm-hallucination-activity-7112445887888457728-kdHj?utm_source=share&amp;utm_medium=member_ios">A Metrics-First Approach to LLM Evaluation</a></p>
+<p><code>LLM Evaluation</code> <code>Human Evaluation</code> <code>Traditional Metrics</code> <code>Galileo Metrics</code></p>
+<p>The industry has started adopting LLMs for various applications, but evaluating their performance is challenging. Human evaluation is costly and prone to errors, traditional metrics have poor correlations with human judgment, and reliable benchmarks are absent. Galileo has built metrics to help evaluate LLMs in minutes instead of days.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/llamaindex_every-ai-engineer-building-llm-apps-for-prod-activity-7119774357991690242-7qnp?utm_source=share&amp;utm_medium=member_ios">Evaluation Driven Development for LLM Apps</a></p>
+<p><code>Evaluation Driven Development</code> <code>LLM</code> <code>EDD</code> <code>Stochastic nature of LLMs</code> <code>LlamaIndex</code> <code>Retrieval methods</code> <code>Comparing LLMs</code></p>
+<p>The article discusses the importance of Evaluation Driven Development (EDD) for building LLM apps. It provides a step-by-step guide to EDD, including defining evaluation metrics, defining an evaluation dataset, and trying out different approaches. The article also highlights the importance of EDD for mitigating the risks associated with the stochastic nature of LLMs. Finally, the article provides links to additional resources on EDD.</p>
+</li>
+<li>
+<p><a href="https://www.databricks.com/blog/LLM-auto-eval-best-practices-RAG">How to Evaluate Chatbots with Large Language Models</a></p>
+<p><code>Chatbots</code> <code>LLM</code> <code>RAG</code> <code>Evaluation</code> <code>MLflow</code></p>
+<p>This article explores how to evaluate chatbots with large language models (LLMs). It discusses the use of LLMs as judges for automated evaluation, and provides best practices for using LLM judges. The article also discusses the importance of using use-case-specific benchmarks for evaluation.</p>
+</li>
+<li>
+<p><a href="https://towardsdatascience.com/demystifying-ndcg-bee3be58cfe0#:~:text=models%20in%20production.-,What%20Is%20NDCG%20and%20Where%20Is%20It%20Used%3F,or%20other%20information%20retrieval%20system">How to Monitor NDCG for Ranking Models in Production</a></p>
+<p><code>Ranking models</code> <code>NDCG</code> <code>ML observability</code> <code>Model monitoring</code> <code>Machine learning</code></p>
+<p>This article provides a comprehensive guide to monitoring Normalized Discounted Cumulative Gain (NDCG) for ranking models in production. It covers the intuition behind NDCG, its calculation, and how it can be used to evaluate the performance of ranking models. Additionally, the article discusses the challenges of maintaining ranking models in production and how ML observability can help.</p>
+</li>
+<li>
+<p><a href="https://towardsdatascience.com/ranking-evaluation-metrics-for-recommender-systems-263d0a66ef54">Index Metrics for Evaluating Recommender System Performance</a></p>
+<p><code>Recommender Systems</code> <code>Evaluation Metrics</code> <code>Hit Ratio</code> <code>MRR</code> <code>Precision</code> <code>Recall</code> <code>MAP</code> <code>NDCG</code></p>
+<p>Recommender systems output a ranking list of items. Hit ratio, MRR, Precision, Recall, MAP, NDCG are commonly used metrics to evaluate the performance of recommender systems.</p>
+</li>
+</ul>
+</details>
+<h2 id="llms-deployment">LLMs Deployment<a class="headerlink" href="#llms-deployment" title="Permanent link">&para;</a></h2>
+<p><img alt="LLMs Deployment" src="../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-deployment.png" /></p>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/aboniasojasingarayar_llm-llmops-mlops-activity-7117777649896210432-IA5B?utm_source=share&amp;utm_medium=member_ios">Model Serving Frameworks for 2023</a></p>
+<p><code>Model Serving</code> <code>AI</code> <code>Machine Learning</code> <code>MLOps</code></p>
+<p>The article provides a comprehensive list of model serving frameworks for AI applications in 2023. It highlights the benefits and features of each framework, including BentoML, Jina, and Torchserve, and emphasizes their importance in the MLOps process.</p>
+</li>
+<li>
+<p><a href="https://vllm.ai/">vLLM: A High-Throughput Library for Large Language Model Serving</a></p>
+<p><code>LLM</code> <code>machine learning</code> <code>artificial intelligence</code> <code>natural language processing</code></p>
+<p>vLLM is an open-source library for fast LLM inference and serving. It utilizes PagedAttention, a new attention algorithm that effectively manages attention keys and values. vLLM equipped with PagedAttention redefines the new state of the art in LLM serving: it delivers up to 24x higher throughput than HuggingFace Transformers, without requiring any model architecture changes.</p>
+</li>
+<li>
+<p><a href="https://hamel.dev/notes/llm/inference/03_inference.html">How to Optimize Latency for Open Source Language Models</a></p>
+<p><code>Optimization</code> <code>Latency</code> <code>LLM</code> <code>Model Serving</code> <code>Inference</code></p>
+<p>This study explores various approaches to optimizing latency for open-source LLMs. The author evaluates the effectiveness of different tools and techniques, including CTranslate2, TGI, bitsandbytes, AutoGPTQ, ExLlama, vLLM, and HuggingFace's hosted inference platform. The results show that vLLM is currently the fastest solution for distributed inference, while HuggingFace's hosted inference platform offers the best performance for single-GPU inference.</p>
+</li>
+<li>
+<p><a href="https://www.databricks.com/blog/llm-inference-performance-engineering-best-practices">How to Optimize Large Language Model (LLM) Inference</a></p>
+<p><code>Large Language Model</code> <code>LLM</code> <code>Inference</code> <code>Optimization</code> <code>Machine Learning</code></p>
+<p>This article provides best practices for optimizing LLM inference, including identifying the optimization target, paying attention to the components of latency, utilizing memory bandwidth, batching, and exploring deeper systems optimizations. It also discusses hardware configurations and the importance of data-driven decisions.</p>
+</li>
+<li>
+<p><a href="https://github.com/huggingface/text-generation-inference">Text Generation Inference</a></p>
+<p><code>HuggingFace</code> <code>LLM</code> <code>Rust</code> <code>Python</code> <code>gRPC</code> <code>Docker</code> <code>CUDA</code> <code>NCCL</code> <code>OpenTelemetry</code> <code>quantization</code></p>
+<p>Text Generation Inference (TGI) is a toolkit for deploying and serving Large Language Models (LLMs). It implements many features such as optimized models, tensor parallelism, and distributed tracing. TGI can be installed locally or used as a Docker container.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/julienchaumond_you-already-knew-text-generation-inference-activity-7120407200228876288-cZ5U?utm_source=share&amp;utm_medium=member_ios">Introducing text-embeddings-inference (TEI): A blazing fast server for sentence or document embedding</a></p>
+<p><code>Machine Learning</code> <code>Natural Language Processing</code> <code>Text Embeddings</code> <code>Serverless Computing</code></p>
+<p>TEI is a new server for sentence or document embedding that is optimized for speed and efficiency. It is based on the <code>candle</code> rust backend and does not require torch, making it very small and lightweight. TEI is a step towards real ML serverless and has the potential to make it easier to use multimodal embeddings in production.</p>
+</li>
+<li>
+<p><a href="https://github.com/huggingface/text-generation-inference">Text Generation Inference: A Rust, Python, and gRPC toolkit</a></p>
+<p><code>HuggingFace</code> <code>Hugging Chat</code> <code>Inference API</code> <code>Inference Endpoint</code> <code>Large Language Models (LLMs)</code> <code>Llama</code> <code>Falcon</code> <code>StarCoder</code> <code>BLOOM</code> <code>GPT-NeoX</code> <code>Open Telemetry</code> <code>Prometheus</code> <code>Tensor Parallelism</code> <code>Server-Sent Events (SSE)</code> <code>transformers.LogitsProcessor</code> <code>Custom Prompt Generation</code> <code>Fine-tuning Support</code></p>
+<p>Text Generation Inference (TGI) is a toolkit for deploying and serving Large Language Models (LLMs). It supports many features such as simple launcher, production readiness, tensor parallelism, token streaming, continuous batching, optimized transformers code, quantization, watermarking, logits warper, stop sequences, log probabilities, custom prompt generation, and fine-tuning support.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/travisaddair_lora-exchange-lorax-serve-100s-of-fine-tuned-activity-7120819275442896896-vlI_">LoRAX: The LLM Inference Server that Speaks for the GPUs</a></p>
+<p><code>LLM</code> <code>LoRA</code> <code>GPU</code> <code>Cloud</code> <code>Predibase</code></p>
+<p>LoRAX is a new kind of LLM inference solution designed to make it cost effective and scalable to serve many fine-tuned models in production at once, conserving precious GPUs by dynamically exchanging in and out fine-tuned LoRA models within a single LLM deployment.</p>
+</li>
+</ul>
+</details>
+<h3 id="running-llms-locally">Running LLMs Locally<a class="headerlink" href="#running-llms-locally" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://pub.towardsai.net/high-speed-inference-with-llama-cpp-and-vicuna-on-cpu-136d28e7887b">Run Large Language Models on Your CPU with Llama.cpp</a></p>
+<p><code>LLM</code> <code>Inference</code> <code>CPU</code> <code>GPU</code> <code>ChatGPT</code> <code>Vicuna</code> <code>GPT4ALL</code> <code>Alpaca</code> <code>ggml</code></p>
+<p>This article explains how to set up llama.cpp on your computer to run large language models on your CPU. It focuses on Vicuna, a chat model behaving like ChatGPT, but also shows how to run llama.cpp for other language models.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/Coj72EzmX20">h2oGPT - 100% Private, 100% Local Chat with a GPT</a></p>
+<p><code>LLM</code> <code>h2oGPT</code> <code>Open Source</code> <code>Private</code> <code>Local</code></p>
+<p>This video shows how to install and use h2oGPT, an open-source large language model (LLM), on a local computer for private, local chat with a GPT.</p>
+</li>
+<li>
+<p><a href="https://www.xzh.me/2023/09/a-perplexity-benchmark-of-llamacpp.html?m=1">Run Large Language Models on Your Own Computer with llama.cpp</a></p>
+<p><code>Large Language Models</code> <code>Llama.cpp</code> <code>NVIDIA CUDA</code> <code>Ubuntu 22.04</code></p>
+<p>This blog post provides a step-by-step guide for running the Llama-2 7B model using llama.cpp, with NVIDIA CUDA and Ubuntu 22.04.</p>
+</li>
+<li>
+<p><a href="https://github.com/jmorganca/ollama">Get up and running with Llama 2 and other large language models locally</a></p>
+<p><code>LLM</code> <code>Ollama</code> <code>Modelfile</code> <code>Docker</code> <code>REST API</code></p>
+<p>This article provides instructions on how to get up and running with Llama 2 and other large language models locally. It covers topics such as installing Docker, downloading models, customizing prompts, and using the REST API.</p>
+</li>
+<li>
+<p><a href="https://gpt4all.io/index.html">GPT4All: A Free, Local, Privacy-Aware Chatbot</a></p>
+<p><code>privacy</code> <code>local</code> <code>chatbot</code></p>
+<p>GPT4All is a free-to-use, locally running chatbot that does not require a GPU or internet connection. It is designed to be privacy-aware and does not collect or store any user data.</p>
+</li>
+<li>
+<p><a href="https://localai.io/">LocalAI: An Open Source OpenAI Alternative</a></p>
+<p><code>LLM</code> <code>OpenAI</code> <code>gpt-3</code> <code>localai</code></p>
+<p>LocalAI is a free, open-source alternative to OpenAI that allows you to run LLMs, generate images, audio, and more locally or on-prem with consumer-grade hardware. It does not require a GPU and supports multiple model families that are compatible with the ggml format.</p>
+</li>
+<li>
+<p><a href="https://github.com/PromtEngineer/localGPT">LocalGPT: Chat with your documents on your local device using GPT models</a></p>
+<p><code>localgpt</code> <code>gpt-3</code> <code>language-models</code> <code>privacy</code> <code>security</code></p>
+<p>LocalGPT is an open-source initiative that allows you to converse with your documents without compromising your privacy. With everything running locally, you can be assured that no data ever leaves your computer.</p>
+</li>
+<li>
+<p><a href="https://github.com/liltom-eth/llama2-webui">Run any Llama 2 locally with gradio UI on GPU or CPU from anywhere (Linux/Windows/Mac)</a></p>
+<p><code>GPU</code> <code>CPU</code> <code>Linux</code> <code>Windows</code> <code>Mac</code> <code>Llama 2</code> <code>gradio UI</code> <code>Generative Agents/Apps</code></p>
+<p>This project enables users to run any Llama 2 model locally with a gradio UI on GPU or CPU from anywhere (Linux/Windows/Mac). It uses <code>llama2-wrapper</code> as the local llama2 backend for Generative Agents/Apps.</p>
+</li>
+</ul>
+</details>
+<h3 id="semantic-cache-for-llms">Semantic Cache for LLMs<a class="headerlink" href="#semantic-cache-for-llms" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://github.com/zilliztech/GPTCache/tree/main">GPTCache: Semantic Cache for LLMs</a></p>
+<p><code>LLM</code> <code>Semantic Caching</code> <code>LangChain</code> <code>Llama Index</code></p>
+<p>GPTCache is a semantic cache for LLMs that helps reduce the cost and latency of LLM API calls. It uses embedding algorithms to convert queries into embeddings and uses a vector store for similarity search on these embeddings. This allows GPTCache to identify and retrieve similar or related queries from the cache storage, thereby increasing cache hit probability and enhancing overall caching efficiency.</p>
+</li>
+</ul>
+</details>
+<h2 id="llms-inference-optimisation">LLMs Inference Optimisation<a class="headerlink" href="#llms-inference-optimisation" title="Permanent link">&para;</a></h2>
+<p><img alt="LLMs Inference Optimisation" src="../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-quantisation.png" /></p>
+<h3 id="llm-quantization">LLM Quantization<a class="headerlink" href="#llm-quantization" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><strong><a href="https://arxiv.org/abs/2310.11453">BitNet: Scaling 1-bit Transformers for Large Language Models</a></strong></p>
+<p><code>Transformers</code> <code>Quantization</code> <code>LLM</code></p>
+<p>BitNet is a scalable and stable 1-bit Transformer architecture designed for large language models. It achieves competitive performance while substantially reducing memory footprint and energy consumption, compared to state-of-the-art 8-bit quantization methods and FP16 Transformer baselines. BitNet exhibits a scaling law akin to full-precision Transformers, suggesting its potential for effective scaling to even larger language models while maintaining efficiency and performance benefits.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/prithivirajdamodaran_google-colaboratory-activity-7112035540165619712-fEzF?utm_source=share&amp;utm_medium=member_ios">HuggingFace: An Overview of Natively Supported Quantization Schemes in Transformers</a></p>
+<p><code>HuggingFace</code> <code>Transformers</code> <code>Quantization</code></p>
+<p>The article provides an overview of natively supported quantization schemes in Transformers, including bitsandbytes and GPTQ. It also discusses the relation between bitsandbytes and GPTQ, and compares the performance of GPTQ with bitsandbytes nf4.</p>
+</li>
+<li>
+<p><a href="https://www.philschmid.de/gptq-llama">Hugging Face Optimum GPTQ Quantization</a></p>
+<p><code>Hugging Face</code> <code>Optimum</code> <code>GPTQ</code> <code>Quantization</code> <code>LLM</code> <code>NLP</code></p>
+<p>This blog post introduces GPTQ quantization, a method to compress GPT models by reducing the number of bits needed to store each weight. It also provides a step-by-step tutorial on how to quantize a GPT model using the Hugging Face Optimum library.</p>
+</li>
+<li>
+<p><a href="https://github.com/SqueezeAILab/SqueezeLLM">SqueezeLLM: Efficient LLM Serving with Dense-and-Sparse Quantization</a></p>
+<p><code>Model Compression</code> <code>Quantization</code> <code>Efficient Serving</code></p>
+<p>SqueezeLLM is a post-training quantization framework that incorporates a new method called Dense-and-Sparse Quantization to enable efficient LLM serving. This method splits weight matrices into two components: a dense component that can be heavily quantized without affecting model performance, and a sparse part that preserves sensitive and outlier parts of the weight matrices. With this approach, SqueezeLLM is able to serve larger models with smaller memory footprint, the same latency, and yet higher accuracy and quality.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/sanyambhutani_3-bit-quantisation-is-here-squeezellm-activity-7076906092802244608-8frQ?utm_source=share&amp;utm_medium=member_ios">SqueezeLLM: Achieving 3-bit Quantization for LLM Inference Acceleration</a></p>
+<p><code>Post-Training Quantisation (PQT)</code> <code>Non-Uniform Quantization</code> <code>Dense and Sparse Quantization</code> <code>Memory Bottlenecked Operations</code> <code>GPU Memory Optimization</code> <code>Model Compression</code> <code>LLM Inference Acceleration</code></p>
+<p>The paper proposes SqueezeLLM, a novel Post-Training Quantisation (PQT) technique that achieves 3-bit quantization for LLM inference acceleration. It introduces non-uniform quantization and dense and sparse quantization to address memory bottlenecks and achieve 230% speedup in inference. The paper also compares SqueezeLLM with other quantization techniques and demonstrates its superior performance in terms of compression and accuracy.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/karan-malhotra-44864b10a_230603078pdf-activity-7076079427431923712-NP9d?utm_source=share&amp;utm_medium=member_ios">New Research Paper: Sparse Quantized Representation for Efficient Large Language Model Compression</a></p>
+<p><code>LLM Compression</code> <code>SpQR</code> <code>Quantization</code> <code>Falcon</code> <code>LLaMA</code></p>
+<p>A new research paper introduces Sparse Quantized Representation (SpQR), a new compression format and quantization technique that enables near-lossless compression of LLMs down to 3-4 bits per parameter. This technique works by recognizing and isolating outlier weights that cause large quantization errors, and storing them in higher precision, while compressing all other weights to 3-4 bits. The authors claim that SpQR can achieve relative accuracy losses of less than 1% in perplexity for highly accurate LLMs like Falcon and LLaMA.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/sanyambhutani_two-really-cool-releases-from-last-week-activity-7073834050515329024-qysu?utm_source=share&amp;utm_medium=member_ios">Two Cool Releases from Last Week in the LLM Domain</a></p>
+<p><code>RedPajama Dataset</code> <code>LLM Model Family</code> <code>HELM Benchmark</code></p>
+<p>Cerebras Systems has released a cleaned and de-duplicated version of the RedPajama Dataset, reducing its size by 49%. Additionally, RedPajama has released a model family of 7B size, including chat, instruction fine-tuned, and base models. The instruction fine-tuned model shows promising performance on the HELM benchmark.</p>
+</li>
+</ul>
+</details>
+<h2 id="llms-with-large-context-window">LLMs with Large Context Window<a class="headerlink" href="#llms-with-large-context-window" title="Permanent link">&para;</a></h2>
+<p><img alt="LLMs with Large Context Window" src="../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-large-context.png" /></p>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://blog.gopenai.com/how-to-speed-up-llms-and-use-100k-context-window-all-tricks-in-one-place-ffd40577b4c?gi=01371942e829">How to use 100K context window in LLMs</a></p>
+<p><code>LLM Training</code> <code>Model Size</code> <code>Attention Mechanisms</code></p>
+<p>This article explores techniques to speed up training and inference of LLMs to use large context window up to 100K input tokens. It covers ALiBi positional embedding, Sparse Attention, FlashAttention, Multi-Query attention, Conditional computation, and the use of 80GB A100 GPUs.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/caiming-xiong-150a1417_gpt-largelanguagemodels-nlp-activity-7079888057126047744-jftG?utm_source=share&amp;utm_medium=member_ios">XGen: A New State-of-the-Art 7B LLM with Standard Dense Attention on Up to 8K Sequence Length</a></p>
+<p><code>LLM</code> <code>NLP</code> <code>Machine Learning</code> <code>Artificial Intelligence</code></p>
+<p>XGen is a new state-of-the-art 7B LLM with standard dense attention on up to 8K sequence length. It achieves comparable or better results than other open-source LLMs of similar model size on standard NLP benchmarks. XGen also shows benefits on long sequence modeling benchmarks and achieves great results on both text and code tasks.</p>
+</li>
+</ul>
+</details>
+<h2 id="challenges-with-llms">Challenges with LLMs<a class="headerlink" href="#challenges-with-llms" title="Permanent link">&para;</a></h2>
+<p><img alt="Challenges with LLMs" src="../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-challenges.png" /></p>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://home.mlops.community/public/videos/building-llm-applications-for-production?utm_campaign=LLM%20II%20%231&amp;utm_content=LLM%20in%20production%20keynotes%20are%20out%21&amp;utm_medium=email&amp;utm_source=ActiveCampaign">Challenges in Building LLM Applications for Production</a></p>
+<p><code>Consistency</code> <code>Hallucinations</code> <code>Privacy</code> <code>Context Length</code> <code>Data Drift</code> <code>Model Updates and Compatibility</code> <code>LM on the Edge</code> <code>Model Size</code> <code>Non-English Languages</code> <code>Chat vs. Search as an Interface</code> <code>Data Bottleneck</code> <code>Hype Cycles and the Importance of Data</code></p>
+<p>This talk discusses the challenges in building LLM applications for production. These challenges include consistency, hallucinations, privacy, context length, data drift, model updates and compatibility, LM on the edge, model size, non-English languages, chat vs. search as an interface, data bottleneck, and hype cycles and the importance of data.</p>
+</li>
+<li>
+<p><a href="https://huyenchip.com/2023/08/16/llm-research-open-challenges.html">Open challenges in LLM research</a></p>
+<p><code>hallucinations</code> <code>context learning</code> <code>multimodality</code> <code>new architecture</code> <code>GPU alternatives</code> <code>agent usability</code> <code>learning from human preference</code> <code>chat interface efficiency</code> <code>non-English language support</code></p>
+<p>The article discusses the ten major research directions in the field of LLMs, including reducing and measuring hallucinations, optimizing context length and construction, incorporating other data modalities, making LLMs faster and cheaper, designing new model architectures, developing GPU alternatives, making agents usable, improving learning from human preference, improving the efficiency of the chat interface, and building LLMs for non-English languages.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/prithivirajdamodaran_dont-blindly-reuse-pre-trained-models-from-activity-7082591506200457217-hxEm?utm_source=share&amp;utm_medium=member_ios">The Perils of Blindly Reusing Pre-trained Language Models</a></p>
+<p><code>NLP</code> <code>Transfer Learning</code> <code>Model Analysis</code> <code>WeightWatchers</code></p>
+<p>Reusing pre-trained language models without careful consideration can lead to negative impacts on downstream tasks due to issues such as over-training, under-training, or over-parameterization. WeightWatchers is an open-source diagnostic tool that can be used to analyze DNNs without access to training or test data, helping to identify potential issues before deployment.</p>
+</li>
+</ul>
+</details>
+<h3 id="large-vs-small-langage-models">Large vs Small Langage Models<a class="headerlink" href="#large-vs-small-langage-models" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/sebastien-bubeck-6b558a1a5_textbooks-are-all-you-need-activity-7077091292077330433-w2vZ?utm_source=share&amp;utm_medium=member_ios">Small language models can outperform LLMs in specific domains</a></p>
+<p><code>LLM</code> <code>NLP</code> <code>Machine Learning</code></p>
+<p>A new LLM trained by Microsoft Research achieves 51% on HumanEval with only 1.3B parameters and 7B tokens training dataset, outperforming much larger LLMs. This suggests that smaller language models can be more effective in specific domains, such as Python code-generation.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/lijiali_paper-page-textbooks-are-all-you-need-activity-7078523739017003008-e-jK?utm_source=share&amp;utm_medium=member_ios">Are Large Language Models All We Need?</a></p>
+<p><code>LLM</code> <code>Model Size</code> <code>Data Quality</code></p>
+<p>The author discusses the recent trend of focusing on model sizes in the field of LLMs and argues that data quality is often overlooked. They cite the example of phi-1, a 1.3B parameter Transformer-based model by Microsoft, which achieved surprisingly good results. The author concludes that we should pay more attention to data quality when developing LLMs.</p>
+</li>
+</ul>
+</details>
+<h2 id="llm-applications">LLM Applications<a class="headerlink" href="#llm-applications" title="Permanent link">&para;</a></h2>
+<p><img alt="LLM Applications" src="../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-applications.png" />    </p>
+<h3 id="llms-for-translation">LLMs for Translation<a class="headerlink" href="#llms-for-translation" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/ricky-costa-nlp_github-wxjiaoparrot-the-parrot-framework-activity-7095024621321662464-5HWn?utm_source=share&amp;utm_medium=member_ios">ParroT: Enhancing and Regulating Translation Abilities in Chatbots with Open-Source LLMs</a></p>
+<p><code>LLM</code> <code>Translation</code> <code>Chatbots</code> <code>ParroT</code></p>
+<p>The ParroT framework enhances and regulates the translation abilities of chatbots by leveraging open-source LLMs and human-written translation and evaluation data.</p>
+</li>
+</ul>
+</details>
+<h3 id="llms-for-mobile-app-developers">LLMs For Mobile App Developers<a class="headerlink" href="#llms-for-mobile-app-developers" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/sahar-mor_a-big-step-forward-for-on-device-llms-activity-7095782887811125248-H5f2?utm_source=share&amp;utm_medium=member_ios">Hugging Face releases tools for Swift developers to incorporate language models in their apps</a></p>
+<p><code>Hugging Face</code> <code>Swift</code> <code>transformers</code> <code>Core ML</code> <code>Llama</code> <code>Falcon</code></p>
+<p>Hugging Face has released a package and tools to help Swift developers incorporate language models in their apps, including swift-transformers, swift-chat, transformers-to-coreml, and ready-to-use LLMs such as Llama 2 7B and Falcon 7B.</p>
+</li>
+</ul>
+</details>
+<h3 id="llm-assistants">LLM Assistants<a class="headerlink" href="#llm-assistants" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/kalyanksnlp_llms-opensource-nlproc-activity-7077128568891207680-umhc?utm_source=share&amp;utm_medium=member_ios">Comparing coding assistants</a></p>
+<p><code>Rust</code> <code>coding assistants</code> <code>best practices</code></p>
+<p>The author asks for advice on how to compare coding assistants. They are concerned about using an assistant for Rust because they are not savvy enough to catch certain bugs. Kalyan KS suggests that the author try out Falcoder, a coding assistant that uses the Falcon-7B model and instruction tuning.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/ugcPost-7076254210232643584-JoY8?utm_source=share&amp;utm_medium=member_ios">GPT-Engineer: An AI Agent That Can Write Entire Codebases</a></p>
+<p><code>Artificial Intelligence</code> <code>Machine Learning</code> <code>Natural Language Processing</code> <code>Programming</code></p>
+<p>GPT-Engineer is an AI agent that can write entire codebases with a prompt and learn how you want your code to look. It asks clarifying questions, generates technical specifications, writes all necessary code, and lets you easily add your own reasoning steps, modify, and experiment. With GPT-Engineer, you can finish a coding project in minutes.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/aleksagordic_daily-paper-time-assistgpt-a-general-activity-7075519171983228928-7Ltf?utm_source=share&amp;utm_medium=member_ios">Introducing AssistGPT: A General Multi-modal Assistant</a></p>
+<p><code>Multimodality</code> <code>Language and Code</code> <code>ReAct Agent</code> <code>Planning and Execution</code></p>
+<p>The paper introduces AssistGPT, a general multi-modal assistant that can plan, execute, inspect, and learn. It combines many of the latest trends in AI, including multimodality, language and code, and ReAct agents. The paper also includes a cool demo and discusses the latency of the system.</p>
+</li>
+<li>
+<p><a href="https://blog.langchain.dev/gpteam-a-multi-agent-simulation/">GPTeam: Building Human-like Social Behavior in Language Models</a></p>
+<p><code>Multi-agent simulation</code> <code>Human-like social behavior</code> <code>Language models</code> <code>Generative agents</code></p>
+<p>GPTeam is a completely customizable open-source multi-agent simulation, inspired by Stanford’s ground-breaking “Generative Agents” paper. Every agent within a GPTeam simulation has their own unique personality, memories, and directives, leading to interesting emergent behavior as they interact.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/sanyambhutani_llm-powered-autonomous-agents-lilian-activity-7079812038943809536-0xsL?utm_source=share&amp;utm_medium=member_ios">LLM Powered Autonomous Agents</a></p>
+<p><code>Large Language Model</code> <code>Planning</code> <code>Memory</code> <code>Tool Use</code></p>
+<p>The article provides a comprehensive overview of building Large Language Model powered agents, including relevant papers, practical applications, and case studies.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/prithivirajdamodaran_best-write-ups-ever-on-llm-agents-by-my-favourite-activity-7079821641832091648-hM-l?utm_source=share&amp;utm_medium=member_ios">Best write-up ever on LLM Agents</a></p>
+<p><code>LLM</code> <code>NLP</code> <code>OpenAI</code></p>
+<p>The article provides a comprehensive overview of LLM agents, including their capabilities, limitations, and potential applications. It also discusses the challenges involved in developing and deploying LLM agents, and the ethical considerations that need to be taken into account.</p>
+</li>
+</ul>
+</details>
+<h3 id="retrieval-augmented-generation">Retrieval Augmented Generation<a class="headerlink" href="#retrieval-augmented-generation" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/prithivirajdamodaran_usecase-retrieval-augmented-generation-for-activity-7076430925122691072-nYMj?utm_source=share&amp;utm_medium=member_ios">RAG &amp; Enterprise: A Match Made in Heaven</a></p>
+<p><code>RAG</code> <code>LLM</code> <code>Enterprise Search</code> <code>Information Retrieval</code></p>
+<p>RAG (Retrieve and Generate) models are a powerful tool for enterprise search, as they offer flexibility, practicality, broader coverage, and interpretability. Additionally, with the help of tools like LangChain and Google Vertex, it is now easier than ever to implement RAG solutions.</p>
+</li>
+<li>
+<p><a href="https://youtu.be/OsxZG2XfcZA">HNSW-FINGER: Approximate Nearest Neighbor Search with Locality-Sensitive Hashing</a></p>
+<p><code>locality-sensitive hashing</code> <code>approximate nearest neighbor search</code> <code>HNSW</code></p>
+<p>HNSW-FINGER is a new approximate nearest neighbor search algorithm that uses locality-sensitive hashing to project the query and candidate nodes onto a center node. This allows HNSW-FINGER to achieve better accuracy and efficiency than existing approximate nearest neighbor search algorithms.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/damienbenveniste_machinelearning-datascience-artificialintelligence-activity-7085279691611213824-RnrZ?utm_source=share&amp;utm_medium=member_ios">Vector Databases and Hierarchical Navigable Small World</a></p>
+<p><code>Vector Databases</code> <code>Machine Learning</code> <code>Artificial Intelligence</code> <code>Data Science</code> <code>Generative AI</code></p>
+<p>The article discusses the rise of vector databases in the era of generative AI and introduces Hierarchical Navigable Small World (HNSW) as an efficient indexing method. HNSW builds multiple graph layers with varying densities to optimize the search process and reduce the number of iterations required to find approximate nearest neighbors.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/langchain_rag-fusion-a-new-retrieval-technique-activity-7122978999038857216-xTB8">RAG-Fusion: A New Retrieval Technique for LLM</a></p>
+<p><code>LLM</code> <code>Retrieval</code> <code>MultiQueryRetrieval</code> <code>Reciprocal Rank Fusion</code></p>
+<p>RAG-Fusion is a new retrieval technique that builds upon the idea of MultiQueryRetrieval. It generates multiple sub queries based on a user question, retrieves documents for each sub query, and merges the retrieved documents together using Reciprocal Rank Fusion.</p>
+</li>
+<li>
+<p><a href="https://python.langchain.com/docs/use_cases/question_answering.html">Question Answering over Documents with Retrieval-Augmented Generation</a></p>
+<p><code>rag</code> <code>question answering</code> <code>information retrieval</code> <code>llm</code></p>
+<p>This article describes how to build a question-answering over documents application using LLMs. The article covers the use of retrieval-augmented generation (RAG) for this task, and provides a walkthrough of how to build such an application.</p>
+</li>
+<li>
+<p><a href="https://python.langchain.com/docs/modules/data_connection/document_transformers/post_retrieval/long_context_reorder">Reordering retrieved documents to improve performance</a></p>
+<p><code>long context</code> <code>performance degradation</code> <code>retrieval</code></p>
+<p>When models must access relevant information in the middle of long contexts, they tend to ignore the provided documents. This issue can be avoided by reordering documents after retrieval to avoid performance degradation.</p>
+</li>
+<li>
+<p><a href="https://www.sbert.net/examples/applications/retrieve_rerank/README.html">How to improve the performance of your LLM search engine with Retrieve &amp; Re-Rank</a></p>
+<p><code>LLM</code> <code>Semantic Search</code> <code>Information Retrieval</code> <code>Question Answering</code></p>
+<p>This article explains how to improve the performance of your LLM search engine with Retrieve &amp; Re-Rank. It covers lexical search, dense retrieval, semantic search and cross-encoders.</p>
+</li>
+<li>
+<p><a href="https://virtual2023.aclweb.org/paper_P452.html?utm_source=linkedin&amp;utm_medium=organic_social&amp;utm_campaign=acl2023&amp;utm_content=image">EAR: Improving Passage Retrieval for Open-Domain Question Answering with Query Expansion and Reranking</a></p>
+<p><code>passage retrieval</code> <code>query expansion</code> <code>query reranking</code> <code>open-domain question answering</code></p>
+<p>EAR is a query Expansion And Reranking approach for improving passage retrieval, with the application to open-domain question answering. EAR first applies a query expansion model to generate a diverse set of queries, and then uses a query reranker to select the ones that could lead to better retrieval results.</p>
+</li>
+<li>
+<p><a href="https://www.sbert.net/docs/pretrained-models/msmarco-v3.html">MS MARCO: A Large Scale Information Retrieval Corpus</a></p>
+<p><code>information retrieval</code> <code>semantic search</code> <code>TREC-DL 2019</code> <code>MS Marco Passage Retrieval</code> <code>BM25</code> <code>ElasticSearch</code> <code>electra-base-model</code> <code>cross-encoder</code></p>
+<p>MS MARCO is a large scale information retrieval corpus that was created based on real user search queries using Bing search engine. It can be used for semantic search, i.e., given keywords / a search phrase / a question, the model will find passages that are relevant for the search query. Performance is evaluated on TREC-DL 2019 and MS Marco Passage Retrieval dataset. As baseline we show the results for lexical search with BM25 using ElasticSearch.</p>
+</li>
+<li>
+<p><a href="https://python.langchain.com/docs/modules/data_connection/retrievers/self_query">Self-querying retriever: A new way to search for information</a></p>
+<p><code>LLM</code> <code>VectorStore</code> <code>information retrieval</code></p>
+<p>A self-querying retriever is a new way to search for information that uses a query-constructing LLM chain to write a structured query and then applies that structured query to its underlying VectorStore. This allows the retriever to not only use the user-input query for semantic similarity comparison with the contents of stored documents but to also extract filters from the user query on the metadata of stored documents and to execute those filters.</p>
+</li>
+<li>
+<p><a href="https://www.pinecone.io/learn/series/nlp/genq/">GenQ: Training Effective Dense Retrieval Models with Synthetic Queries</a></p>
+<p><code>dense retrieval</code> <code>bi-encoders</code> <code>sentence transformers</code> <code>text generation</code> <code>synthetic data</code> <code>asymmetric semantic search</code> <code>query generation</code> <code>T5</code> <code>MNR loss</code> <code>Pinecone</code></p>
+<p>GenQ is a method for training effective dense retrieval models using synthetic queries. It uses a text generation model to generate queries for unlabeled passages of text, which are then used to fine-tune a bi-encoder model. GenQ can achieve performances approaching models trained with supervised methods, and it is particularly useful when we have limited labeled data.</p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/2301.01820">InPars-v2: Efficient Dataset Generation for Information Retrieval with Open-Source Language Models</a></p>
+<p><code>information retrieval</code> <code>large language models</code> <code>dataset generation</code> <code>open-source</code></p>
+<p>InPars-v2 is a dataset generator that uses open-source LLMs and existing powerful rerankers to select synthetic query-document pairs for training. It achieves new state-of-the-art results on the BEIR benchmark.</p>
+</li>
+<li>
+<p><a href="https://qdrant.tech/">Qdrant: A Vector Database &amp; Vector Similarity Search Engine</a></p>
+<p><code>Vector database</code> <code>Vector similarity search</code> <code>Approximate nearest neighbor search</code> <code>Machine learning</code> <code>Artificial intelligence</code></p>
+<p>Qdrant is a vector database and vector similarity search engine that can be used for building applications such as matching, searching, and recommending. It is easy to use and provides a variety of features such as support for additional payload associated with vectors, payload filtering conditions, and dynamic query planning.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/llamaindex_we-present-a-cool-new-algorithm-for-better-activity-7101703776104845312-8Kc9?utm_source=share&amp;utm_medium=member_ios">AutoMergingRetriever: A New Algorithm for Better Retrieval and RAG</a></p>
+<p><code>LLM</code> <code>Retrieval</code> <code>RAG</code> <code>ChatGPT</code> <code>Dynamic Retrieval</code> <code>Semantic Relatedness</code></p>
+<p>The AutoMergingRetriever algorithm dynamically retrieves less disparate / larger contiguous blobs of context <em>only when you need it</em>. This helps the LLM synthesize better results, but avoids always cramming in as much context as you can.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=QpRTdZDR4tE">Optimizing RAG With LLMS: Exploring Chunking Techniques and Reranking for Enhanced Results</a></p>
+<p><code>LLM</code> <code>Chunking</code> <code>Ranking</code> <code>Retrieval Augmented Generation (RAG)</code></p>
+<p>This article explores chunking techniques and reranking for enhanced results in the context of optimizing RAG with LLMs. The key points covered include strategies for optimizing RAG, using chunking techniques to streamline processing, and implementing ranking models to enhance search quality.</p>
+</li>
+<li>
+<p><a href="https://x.com/clusteredbytes/status/1707864519433736305?s=20">Dynamic chunk length in AutoMergingRetriever</a></p>
+<p><code>language-models</code> <code>retrieval</code> <code>summarization</code></p>
+<p>The AutoMergingRetriever dynamically chooses the chunk length when retrieving information, resulting in better semantic meaning and context.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/llamaindex_building-good-rag-systems-is-hard-but-building-activity-7114307512664825856-4swa?utm_source=share&amp;utm_medium=member_ios">Multi-Document Agents for Building LLM-Powered QA Systems</a></p>
+<p><code>RAG</code> <code>LLM</code> <code>QA</code> <code>summarization</code> <code>multi-document agents</code></p>
+<p>The article introduces a new approach for building LLM-powered QA systems that can scale to large numbers of documents and question types. The approach uses multi-document agents, which are able to answer a broad set of questions, including fact-based QA over single documents, summarization over single documents, fact-based comparisons over multiple documents, and holistic comparisons across multiple documents.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/llamaindex_adjusting-your-chunk-size-is-one-of-the-first-activity-7116163608417337344-ejfk?utm_source=share&amp;utm_medium=member_ios">How to Improve Your RAG App: Adjusting Chunk Size</a></p>
+<p><code>RAG</code> <code>chunk size</code> <code>retrieval</code> <code>ranking</code> <code>evaluation</code></p>
+<p>Adjusting chunk size is an important step in improving the performance of a RAG app. More chunks do not always lead to better results, and reranking retrieved chunks may not necessarily improve results either. To find the optimal chunk size, it is necessary to define an evaluation benchmark and perform a sweep over chunk sizes and top-k values. The Arize AI team has provided a comprehensive Colab notebook and slides that demonstrate how to run chunk size sweeps and perform retrieval and Q&amp;A evaluations with Phoenix and LlamaIndex.</p>
+</li>
+<li>
+<p><a href="https://blog.llamaindex.ai/evaluating-the-ideal-chunk-size-for-a-rag-system-using-llamaindex-6207e5d3fec5">How to Choose the Right Chunk Size for Your RAG System</a></p>
+<p><code>RAG system</code> <code>chunk size</code> <code>response time</code> <code>faithfulness</code> <code>relevancy</code></p>
+<p>Choosing the right chunk size for a RAG system is critical for efficiency and accuracy. The optimal chunk size strikes a balance between capturing essential information and speed. The article provides a practical evaluation setup to determine the right chunk size for a specific use case and dataset.</p>
+</li>
+<li>
+<p><a href="https://github.com/Raudaschl/rag-fusion">RAG-Fusion: The Next Frontier of Search Technology</a></p>
+<p><code>Reciprocal Rank Fusion</code> <code>Query Generation</code> <code>Retrieval Augmented Generation</code> <code>Vector Search</code></p>
+<p>RAG-Fusion is a search methodology that aims to bridge the gap between traditional search paradigms and the multifaceted dimensions of human queries. It employs multiple query generation and Reciprocal Rank Fusion to re-rank search results, with the goal of unearthing transformative knowledge that often remains hidden behind top search results.</p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/2310.04408">RECOMP: Improving Retrieval-Augmented LMs with Compression and Selective Augmentation</a></p>
+<p><code>language-models</code> <code>retrieval-augmentation</code> <code>compression</code> <code>abstractive-summarization</code> <code>extractive-summarization</code></p>
+<p>We propose a method to improve the performance of retrieval-augmented language models (LMs) by compressing the retrieved documents into textual summaries. Our method, RECOMP, achieves a compression rate of as low as 6% with minimal loss in performance for both language modeling and open domain question answering tasks. We also show that our compressors trained for one LM can transfer to other LMs on the language modeling task and provide summaries largely faithful to the retrieved documents.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/feed/update/urn:li:activity:7113422147821211648?utm_source=share&amp;utm_medium=member_ios">Optimizing Retrieval and Generation Performance in Large Language Models</a></p>
+<p><code>RAG</code> <code>Machine Learning</code> <code>Knowledge Retrieval</code> <code>AI</code></p>
+<p>This article discusses various techniques for optimizing retrieval and generation performance in large language models, including decoupling chunks for retrieval and synthesis, using structured retrieval techniques, dynamically retrieving chunks based on tasks, and optimizing context embeddings.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/omarsar_instruction-tuning-the-largest-pretrained-activity-7118231963194253312-6yjm?utm_source=share&amp;utm_medium=member_ios">Scaling Retrieval-Augmented LLM to 48B</a></p>
+<p><code>LLM Scaling</code> <code>Retrieval-Augmented LLM</code> <code>Instruction Tuning</code></p>
+<p>NVIDIA introduces Retro 48B, the largest LLM pretrained with retrieval. It shows significant perplexity improvement over GPT 43B and can be instruction-tuned more effectively, achieving +7% improvement on zero-shot question-answering tasks.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/llamaindex_how-do-you-easily-parse-and-perform-rag-over-activity-7120853678915289088-iCPF?utm_source=share&amp;utm_medium=member_ios">Parsing complex documents with embedded tables using unstructured.io and LlamaIndex</a></p>
+<p><code>unstructured.io</code> <code>LlamaIndex</code> <code>SEC filings</code> <code>research papers</code> <code>invoices</code></p>
+<p>Parsing complex documents with embedded tables can be done using <a href="http://unstructured.io/">unstructured.io</a> and LlamaIndex. This is especially relevant for SEC filings, research papers, invoices, and more.</p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1v7T6ejrSo87ndGeGC7tt6zeq-cftu03WWw7WL8Jskug/mobilepresent?slide=id.g2476298ff5a_0_160">LLM Production Ready RAGs</a></p>
+<p><code>LLM</code> <code>RAG</code> <code>Best Practices</code></p>
+<p>This talk will discuss best practices for creating production ready RAGs in the context of LLMs.</p>
+</li>
+<li>
+<p><a href="https://docs.llamaindex.ai/en/stable/examples/query_engine/sec_tables/tesla_10q_table.html">Joint Tabular/Semantic QA over Tesla 10K</a></p>
+<p><code>LLM</code> <code>NLP</code> <code>Information Retrieval</code> <code>Question Answering</code></p>
+<p>This article demonstrates how to ask questions over Tesla's 10K report with understanding of both the unstructured text as well as embedded tables. It utilizes Unstructured to parse out the tables and LlamaIndex recursive retrieval to index and retrieve tables if necessary given the user question.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/llamaindex_we-added-a-lot-of-new-fine-tuning-features-activity-7116229026754543616-i-Ab?utm_source=share&amp;utm_medium=member_ios">New Fine-Tuning Features in LlamaIndex</a></p>
+<p><code>fine-tuning</code> <code>retrieval augmentation</code> <code>structured outputs</code></p>
+<p>This week, LlamaIndex added a lot of new fine-tuning features, including fine-tuning with retrieval augmentation and fine-tuning for better structured outputs.</p>
+</li>
+<li>
+<p><a href="https://medium.com/towards-generative-ai/superknowa-simplest-framework-yet-to-swiftly-build-enterprise-rag-solutions-at-scale-ca90b49be28a">SuperKnowa: Building Reliable RAG Pipelines for Enterprise LLM Applications</a></p>
+<p><code>RAG</code> <code>LLM</code> <code>NLP</code> <code>Generative AI</code> <code>Enterprise AI</code></p>
+<p>This article introduces SuperKnowa, a framework for building reliable and scalable RAG pipelines for enterprise LLM applications. It discusses the challenges of taking a RAG PoC to production and how SuperKnowa addresses these challenges. The article also provides an overview of the SuperKnowa framework and its features, including data indexing, context-aware queries, model evaluation, and debugging.</p>
+</li>
+<li>
+<p><a href="https://github.com/run-llama/sec-insights">SEC Insights: A real-world full-stack application using LlamaIndex</a></p>
+<p><code>LLM</code> <code>RAG</code> <code>SEC Insights</code> <code>Tutorial</code> <code>Open Source</code></p>
+<p>This repository contains the code for SEC Insights, a real-world full-stack application that uses the Retrieval Augmented Generation (RAG) capabilities of LlamaIndex to answer questions about SEC 10-K &amp; 10-Q documents. The application is open source and available on GitHub. A tutorial video is also available on YouTube.</p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/2010.06467">Text Ranking with Pretrained Transformers</a></p>
+<p><code>Text Ranking</code> <code>Transformers</code> <code>BERT</code> <code>Self-supervised Learning</code> <code>Natural Language Processing</code> <code>Information Retrieval</code></p>
+<p>This survey provides an overview of text ranking with neural network architectures known as transformers. We cover a wide range of modern techniques, grouped into two high-level categories: transformer models that perform reranking in multi-stage architectures and dense retrieval techniques that perform ranking directly.</p>
+</li>
+<li>
+<p><a href="https://twitter.com/jerryjliu0/status/1692931028963221929?s=20">8 Key Considerations for Building Production-Grade LLM Apps</a></p>
+<p><code>LLM</code> <code>RAG</code> <code>Embeddings</code> <code>Data Pipelines</code> <code>Scalability</code> <code>Retrieval</code> <code>Entity Lookup</code></p>
+<p>This article discusses 8 key considerations for building production-grade LLM apps over your data. These considerations include using different chunks for retrieval and synthesis, using embeddings that live in a different latent space than the raw text, dynamically loading/updating the data, designing the pipeline for scalability, storing data in a hierarchical fashion, using robust data pipelines, and using hybrid search for entity lookup.</p>
+</li>
+</ul>
+</details>
+<h3 id="embeddings-for-retrieval">Embeddings for Retrieval<a class="headerlink" href="#embeddings-for-retrieval" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://python.langchain.com/docs/modules/data_connection/text_embedding/integrations/aleph_alpha">How to use Aleph Alpha's semantic embeddings</a></p>
+<p><code>embeddings</code> <code>semantic embeddings</code> <code>Aleph Alpha</code></p>
+<p>There are two ways to use Aleph Alpha's semantic embeddings: asymmetric embeddings and symmetric embeddings.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/prithivirajdamodaran_%3F%3F%3F%3F-%3F%3F%3F%3F-%3F%3F%3F%3F%3F-%3F%3F%3F%3F-activity-7120279840569597952-iwc-?utm_source=share&amp;utm_medium=member_ios">TaylorAI/gte-tiny: A 45MB Tiny Model That Beats Existing Sentence-Transformer Embeddings</a></p>
+<p><code>Vector Search</code> <code>Sentence Transformer</code> <code>Embedding</code> <code>VectorDB</code> <code>MTEB Leaderboard</code></p>
+<p>The paper introduces TaylorAI/gte-tiny, a 45MB tiny model that beats existing sentence-transformer embedders. The model is based on BERT and distilled from thenlper/gte-small. It achieves comparable performance to larger models while being much smaller and faster. The model ranks 28th out of 126 models on the MTEB leaderboard.</p>
+</li>
+<li>
+<p><a href="https://python.langchain.com/docs/modules/data_connection/text_embedding/integrations/sentence_transformers">LLM-based Sentence Embeddings</a></p>
+<p><code>LLM</code> <code>Sentence Embeddings</code> <code>HuggingFaceEmbeddings</code> <code>SentenceTransformerEmbeddings</code> <code>Sentence-BERT</code></p>
+<p>This article introduces a new way to generate sentence embeddings using LLM. The method is based on the HuggingFaceEmbeddings integration, which allows users to use SentenceTransformers embeddings directly. The article also provides an example of how to use the new method.</p>
+</li>
+</ul>
+</details>
+<h3 id="evaluating-rags">Evaluating RAGs<a class="headerlink" href="#evaluating-rags" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://github.com/explodinggradients/ragas">Ragas: A Framework for Evaluating Retrieval Augmented Generation Pipelines</a></p>
+<p><code>LLM</code> <code>RAG</code> <code>NLP</code> <code>Machine Learning</code></p>
+<p>Ragas is a framework that helps you evaluate your Retrieval Augmented Generation (RAG) pipelines. It provides you with the tools based on the latest research for evaluating LLM-generated text to give you insights about your RAG pipeline. Ragas can be integrated with your CI/CD to provide continuous checks to ensure performance.</p>
+</li>
+</ul>
+</details>
+<h3 id="integrating-llms-with-knowledge-graphs">Integrating LLMs with Knowledge Graphs<a class="headerlink" href="#integrating-llms-with-knowledge-graphs" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/llamaindex_google-colaboratory-activity-7101315253833011200-zEOX?utm_source=share&amp;utm_medium=member_ios">LLMs and Knowledge Graphs</a></p>
+<p><code>Knowledge Graphs</code> <code>LLMs</code> <code>RAG</code> <code>Vector Databases</code> <code>ChromaDB</code></p>
+<p>This article discusses the advantages and disadvantages of using Knowledge Graphs (KGs) with LLMs. It also provides a link to a Colab notebook and a video tutorial on the topic.</p>
+</li>
+</ul>
+</details>
+<h3 id="llm-watermarking">LLM Watermarking<a class="headerlink" href="#llm-watermarking" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/srijankr_ai-activity-7076757082720403456-eVjm?utm_source=share&amp;utm_medium=member_ios">AI generated text? New research shows watermark removal is harder than one thinks!</a></p>
+<p><code>LLM</code> <code>Watermarking</code> <code>Text Generation</code> <code>AI Ethics</code></p>
+<p>Researchers from the University of Maryland have found that it is much harder to remove watermarks from AI-generated text than previously thought. This has implications for the use of watermarks to detect machine-generated content, such as spam and harmful content.</p>
+</li>
+</ul>
+</details>
+<h2 id="llm-application-development">LLM Application Development<a class="headerlink" href="#llm-application-development" title="Permanent link">&para;</a></h2>
+<p><img alt="LLM Application Development" src="../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-app-development.png" /></p>
+<h3 id="llm-saas-apps">LLM SaaS Apps<a class="headerlink" href="#llm-saas-apps" title="Permanent link">&para;</a></h3>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.rungalileo.io/blog/announcing-llm-studio">Introducing LLM Studio: A Powerful Platform for Building and Deploying Language Models</a></p>
+<p><code>LLM</code> <code>NLP</code> <code>Machine Learning</code></p>
+<p>LLM Studio is a powerful platform that enables developers to easily build, train, and deploy language models. With its user-friendly interface and comprehensive set of features, LLM Studio makes it easy to create and deploy state-of-the-art language models for a variety of applications.</p>
+</li>
+<li>
+<p><a href="https://www.linkedin.com/posts/edwardschmuhl_machinelearning-ai-llm-activity-7112466389528891393-VEtf?utm_source=share&amp;utm_medium=member_ios">Verba: The Open-Source LLM-Based Search Engine</a></p>
+<p><code>LLM</code> <code>Open Source</code> <code>Search Engine</code></p>
+<p>Verba is an open-source LLM-based search engine that supports a broad spectrum of open-source libraries and custom features. It is easy to install and use, and it does not require users to give away any of their data.</p>
+</li>
+</ul>
+</details>
+<h2 id="llm-courses">LLM Courses<a class="headerlink" href="#llm-courses" title="Permanent link">&para;</a></h2>
+<p><img alt="LLM Courses" src="../../images/session_1/part_3_landscape_of_llms/Large%20Language%20Models-courses.png" /></p>
+<details>
+<summary>References</summary>
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/manishsgupta_%3F%3F%3F%3F%3F-%3F%3F%3F%3F%3F%3F-%3F%3F-%3F%3F%3F%3F%3F%3F-activity-7085475843833016320-rvZ9?utm_source=share&amp;utm_medium=member_ios">LLM course recommendations</a></p>
+<p><code>LLM</code> <code>NLP</code> <code>AI</code></p>
+<p>The article recommends some short courses on LLM. The author also recommends some YouTube channels and videos on LLM.</p>
+</li>
+</ul>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../part_2_building_blocks_of_llms/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Building Blocks of LLMs">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Building Blocks of LLMs
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../session_4/" class="md-footer__link md-footer__link--next" aria-label="Next: Session 4 - Training and Evaluating LLMs On Custom Datasets">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Session 4 - Training and Evaluating LLMs On Custom Datasets
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Infocusp Innovations LLP
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://infocusp.com" target="_blank" rel="noopener" title="infocusp.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.4c2.2 20.4 3.3 41.8 3.3 64zm28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7zm-209 0H18.6c30-74.1 93.6-130.9 172-151.6-25.5 34.2-45.3 87.7-55.3 151.6zM8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zm186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6-78.4-20.7-142-77.5-172-151.6h116.7zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.6z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://in.linkedin.com/company/infocusp" target="_blank" rel="noopener" title="in.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/InFoCusp" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://instagram.com/infocuspinnovations" target="_blank" rel="noopener" title="instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/_infocusp" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9L389.2 48zm-24.8 373.8h39.1L151.1 88h-42l255.3 333.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.footer", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "search.suggest", "search.share", "search.highlight"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
