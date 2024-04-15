@@ -13,9 +13,9 @@ This session is aimed to help:
 
 ## Outline
 
-* Part 1: [Emergence of LLMs](part_1_emergence_of_llms)
-* Part 2: [Building Blocks of LLMs](part_2_building_blocks_of_llms)
-* Part 3: [Landscape of LLMs](part_3_landscape_of_llms)
+* Part 1: [Emergence of LLMs](part_1_emergence_of_llms/README.md)
+* Part 2: [Building Blocks of LLMs](part_2_building_blocks_of_llms/README.md)
+* Part 3: [Landscape of LLMs](part_3_landscape_of_llms/README.md)
 
 ## Session details:
 
