@@ -65,9 +65,9 @@ Coming soon...
 
 ## 💁 Contributing
 
-We are on a generous mission to tackle the daunting FOMO in the LLM race. We need your support for technical articles and related video sessions. See [our mission](OUR_MISSION.md) for more details.
+We are on a generous mission to tackle the daunting FOMO in the LLM race. We need your support for technical articles and related video sessions. See [our mission](contribute/OUR_MISSION.md) for more details.
 
-For detailed information on how to contribute, see [contribution guide](CONTRIBUTION.md).
+For detailed information on how to contribute, see [contribution guide](contribute/CONTRIBUTION.md).
 
 ## 🌟 Contributors
 

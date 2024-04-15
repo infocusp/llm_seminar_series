@@ -51,15 +51,17 @@ On the repository's homepage, you'll find related topics from the mind map organ
 
 **How You Benefit ?**
 
-Let's say you choose to write an article on "Semantic Caching for LLMs" for session 5, part 3. This process involves in-depth independent learning followed by article creation. The article will be added to the repository and published on the website. Additionally, we'll host a live seminar where you present the article. The live stream will be recorded on YouTube for future reference. By participating in this learn-and-publish cycle, you can continuously update your knowledge with the latest llm work.
+* Let's say you choose to write an article on "Semantic Caching for LLMs" for session 5, part 3. This process involves in-depth independent learning followed by article creation. 
+* The article will be added to the repository and published on the website. Additionally, we'll host a live seminar where you present the article. The live stream will be recorded on YouTube for future reference. 
+* By participating in this learn-and-publish cycle, you can continuously update your knowledge with the latest llm work.
 
 **How Others Benefit ?**
 
 Imagine a larger community contributing in this way. Collectively, these smaller contributions can cover a vast range of LLM topics in one central location. This will establish a single, authoritative source for understanding the vast LLM landscape.
 
-Practitioners can leverage this knowledge base when building LLM-based tools. For instance, an engineer considering local LLM deployment can find clear outlines of available options and detailed explanations within relevant sessions. This collaborative approach saves everyone valuable time.
+* Practitioners can leverage this knowledge base when building LLM-based tools. For instance, an engineer considering local LLM deployment can find clear outlines of available options and detailed explanations within relevant sessions. This collaborative approach saves everyone valuable time.
 
-Researchers can use the mind map to track progress within specific areas and identify potential areas for improvement in the hierarchy, such as developing novel prompting techniques that complement existing methods.
+* Researchers can use the mind map to track progress within specific areas and identify potential areas for improvement in the hierarchy, such as developing novel prompting techniques that complement existing methods.
 
 If our vision aligns with yours, join us! Pick a topic that interests you and become part of this generous effort. 
 
