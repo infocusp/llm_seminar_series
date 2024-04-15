@@ -1,5 +1,4 @@
-"""
-Simple training loop; Boilerplate that could apply to any arbitrary neural network,
+"""Simple training loop; Boilerplate that could apply to any arbitrary neural network,
 so nothing in this file really has anything to do with GPT specifically.
 """
 
@@ -8,15 +7,16 @@ from collections import defaultdict
 
 import torch
 from torch.utils.data.dataloader import DataLoader
+
 from mingpt.utils import CfgNode as CN
 
-class Trainer:
 
+class Trainer:
     @staticmethod
     def get_default_config():
         C = CN()
         # device to train on
-        C.device = 'auto'
+        C.device = "auto"
         # dataloder parameters
         C.num_workers = 4
         # optimizer parameters
@@ -24,7 +24,7 @@ class Trainer:
         C.batch_size = 64
         C.learning_rate = 3e-4
         C.betas = (0.9, 0.95)
-        C.weight_decay = 0.1 # only applied on matmul weights
+        C.weight_decay = 0.1  # only applied on matmul weights
         C.grad_norm_clip = 1.0
         return C
 
@@ -36,8 +36,8 @@ class Trainer:
         self.callbacks = defaultdict(list)
 
         # determine the device we'll train on
-        if config.device == 'auto':
-            self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        if config.device == "auto":
+            self.device = "cuda" if torch.cuda.is_available() else "cpu"
         else:
             self.device = config.device
         self.model = self.model.to(self.device)
@@ -67,7 +67,9 @@ class Trainer:
         # setup the dataloader
         train_loader = DataLoader(
             self.train_dataset,
-            sampler=torch.utils.data.RandomSampler(self.train_dataset, replacement=True, num_samples=int(1e10)),
+            sampler=torch.utils.data.RandomSampler(
+                self.train_dataset, replacement=True, num_samples=int(1e10)
+            ),
             shuffle=False,
             pin_memory=True,
             batch_size=config.batch_size,
@@ -79,7 +81,6 @@ class Trainer:
         self.iter_time = time.time()
         data_iter = iter(train_loader)
         while True:
-
             # fetch the next batch (x, y) and re-init iterator if needed
             try:
                 batch = next(data_iter)
@@ -95,15 +96,20 @@ class Trainer:
             # backprop and update the parameters
             model.zero_grad(set_to_none=True)
             self.loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), config.grad_norm_clip)
+            torch.nn.utils.clip_grad_norm_(
+                model.parameters(), config.grad_norm_clip
+            )
             self.optimizer.step()
 
-            self.trigger_callbacks('on_batch_end')
+            self.trigger_callbacks("on_batch_end")
             self.iter_num += 1
             tnow = time.time()
             self.iter_dt = tnow - self.iter_time
             self.iter_time = tnow
 
             # termination conditions
-            if config.max_iters is not None and self.iter_num >= config.max_iters:
+            if (
+                config.max_iters is not None
+                and self.iter_num >= config.max_iters
+            ):
                 break
