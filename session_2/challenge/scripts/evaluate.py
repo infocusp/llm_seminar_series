@@ -35,6 +35,10 @@ _PROMPT = flags.DEFINE_string(
     "prompt", None, "Name of the prompt to evaluate."
 )
 
+_DEBUG = flags.DEFINE_bool(
+    "debug", True, "Prints prompt and response if true."
+)
+
 _SAMPLES_DIR = "sample_inputs"
 
 
@@ -69,20 +73,28 @@ def evaluate(prompt_name: str):
     # Generate results for the dataset.
     dataset = load_sample_test_set()
     correct_pred = 0
-    for job_description, target in tqdm.tqdm(dataset):
+    for idx, (job_description, target) in enumerate(tqdm.tqdm(dataset)):
         prompt = prompt_handler.build_prompt(job_description=job_description)
+        logging.debug("[prompt %d]\n%s", idx, prompt)
         response = llm.generate(prompt=prompt)
+        logging.debug("[response %d]\n%s", idx, response)
         output = prompt_handler.parse_response(model_response=response)
+        logging.debug("[target %d]\n%s", idx, target)
+        logging.debug("[prediction %d]\n%s", idx, output)
         if output == target:
             correct_pred += 1
 
-    logging.info("Acc : %.3f" % (correct_pred / len(dataset) * 100))
+    print("Accuracy: [%.3f] %%" % (correct_pred / len(dataset) * 100))  # noqa: T201
 
 
 def main(argv: Sequence[str]) -> None:
     """Entrypoint."""
     if len(argv) > 1:
         raise app.UsageError("Too many command-line arguments.")
+    if _DEBUG.value:
+        logging.getLogger().setLevel(logging.DEBUG)
+    else:
+        logging.getLogger().setLevel(logging.INFO)
     evaluate(prompt_name=_PROMPT.value)
 
 

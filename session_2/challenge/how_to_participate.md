@@ -1,15 +1,4 @@
-# Prompt Engineering Challenge
-
-## Description
-
-Classify if a job is suitable for a fresher or not from the job description 
-using LLM using prompt engineering.
-
-## Public leaderboard
-
-TODO
-
-## How to participate?
+# How to participate?
 
 !!! tip "TLDR"
      Fork and star the [llm_seminar_series](https://github.com/infocusp/llm_seminar_series)

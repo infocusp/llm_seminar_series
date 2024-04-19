@@ -38,6 +38,7 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format  
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/leaderboard.css
 extra:
   generator: false
   social:
