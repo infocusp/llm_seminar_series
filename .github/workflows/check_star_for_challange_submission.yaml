@@ -1,0 +1,25 @@
+name: Check star for a prompt challenge submission
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  is-stargazer:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: dorny/paths-filter@v3.0.2
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'session_2/challenge/submissions/**'
+      
+      - uses: gacts/is-stargazer@v1.1.0
+        id: check-star
+
+      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.check-star.outputs.is-stargazer != 'true') }}
+        uses: actions/github-script@v6
+        with:
+          script: core.setFailed('⭐ Please, star this repository!')

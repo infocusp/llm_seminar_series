@@ -1,1 +1,7 @@
 site/*
+*.pyc
+
+# Ignore samples used for local testing and keep the default ones.
+session_2/challenge/sample_inputs/*.txt
+!session_2/challenge/sample_inputs/sample_1_yes.txt
+!session_2/challenge/sample_inputs/sample_2_no.txt
