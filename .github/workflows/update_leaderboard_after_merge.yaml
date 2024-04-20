@@ -35,6 +35,13 @@ jobs:
           script: core.setFailed('More than one submissions are not allowed at once.')
 
       - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
+        name: Get author's name from last commit
+        id: author_name
+        run: |
+          author_name=$(git log -1 --pretty=format:'%an' -- "${{ steps.changes.outputs.src_files }}")
+          echo "::set-output name=author_name::$author_name"       
+
+      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
         name: Install Python
         uses: actions/setup-python@v5
         with:
@@ -53,10 +60,10 @@ jobs:
           cd session_2/challenge
           filename=$(basename "${{ steps.changes.outputs.src_files }}")
           filename_without_extension="${filename%.*}"  # Remove extension          
-          python -m scripts.leaderboard --github_user="${{ github.event.pull_request.user.login }}" --prompt="$filename_without_extension"
+          python -m scripts.leaderboard --github_user="${{ steps.author_name.outputs.author_name }}" --prompt="$filename_without_extension"
 
-      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
-        name: Commit changes
-        uses: EndBug/add-and-commit@v9
-        with:
-          default_author: github_actions          
+      # - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
+      #   name: Commit changes
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     default_author: github_actions          
