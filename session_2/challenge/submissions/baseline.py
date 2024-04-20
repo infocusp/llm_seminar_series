@@ -14,7 +14,7 @@ class Baseline(base.PromptSubmission):
         Say "YES" if the given job description is suitable for
         a freshers other wise say "NO".
 
-        {job_description}.
+        {job_description}
         
         """
         return prompt.strip()
