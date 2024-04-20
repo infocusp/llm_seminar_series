@@ -1,7 +1,8 @@
 name: Update leaderboard on PR Merge.
 
 on:
-  push:
+  pull_request:
+    types: [opened, reopened, synchronize]
   # pull_request:
   #   branches:
   #     - development
@@ -39,6 +40,7 @@ jobs:
           # Here we checkout the target branch of the PR
           repository: ${{ github.event.pull_request.base.repo.full_name }}
           ref: ${{ github.event.pull_request.base.ref }}
+          token: ${{ secrets.GH_PAT }}
 
       - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
         name: Install Python
