@@ -38,7 +38,7 @@ _DEBUG = flags.DEFINE_bool(
 
 def evaluate_on_sample_dataset(prompt_name: str):
     """Evaluates the prompt on a sample_dataset."""
-    sample_inputs = dataset.load_sample_test_set(samples_dir="sample_inputs")
+    sample_inputs = dataset.load_dataset_from_dir(samples_dir="dataset")
     acc = evaluate_lib.evaluate(dataset=sample_inputs, prompt_name=prompt_name)
     print("Accuracy: [%.3f] %%" % acc)  # noqa: T201
 

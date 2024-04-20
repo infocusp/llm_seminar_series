@@ -4,8 +4,8 @@ import glob
 import os
 
 
-def load_sample_test_set(samples_dir: str) -> list[tuple[str, bool]]:
-    """Loads sample job descriptions and answers for local testing."""
+def load_dataset_from_dir(samples_dir: str) -> list[tuple[str, bool]]:
+    """Loads job descriptions and labels for evaluation."""
     sample_files = glob.glob(os.path.join(samples_dir, "*.txt"))
     sample_inputs = []
     for filepath in sample_files:

@@ -3,7 +3,7 @@
 Sample command:
 python -m scripts.leaderboard \
     --github_user=your_github_user \
-    --prompt_file=baseline
+    --prompt=baseline
 """
 
 import logging
@@ -109,7 +109,7 @@ def generate_leaderboard(prompt_name: str, accuracy: float, github_user: str):
 
 def update_leaderboard(prompt_name: str, github_user: str):
     """Generates a public leaderboard by evaluating given submission."""
-    sample_dataset = dataset.load_sample_test_set(samples_dir="sample_inputs")
+    sample_dataset = dataset.load_dataset_from_dir(samples_dir="dataset")
     acc = evaluate_lib.evaluate(
         dataset=sample_dataset, prompt_name=prompt_name
     )
