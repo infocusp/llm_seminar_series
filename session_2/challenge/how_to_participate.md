@@ -20,19 +20,18 @@
     ```
 
 3. To submit your own prompt, make a copy of `submissions/baseline.py`  and 
-   change the name of the prompt from `baseline` to something else which
+   change the name of the file from `baseline` to something else which
    describes your prompt. E.g,
    
     ```python
     # file: submissions/name_of_your_prompt.py
     
-    @registry.register("name_of_your_prompt")
+    @registry.register()
     class NameOfYourPrompt(base.PromptSubmission):
         ...
     ```
 
-    Also change the class name and register it with a new name (can be same as the
-    filename.)
+    Also change the class name.
 
 4. Update the `build_prompt` and `parse_response` method.
 
@@ -62,11 +61,4 @@
       your prompt.
 
 8. Congratulations 🎉, once a repo maintainer approves your submission and merges
-   your PR, your rank based on a private test set will be published on the
-   public leader board.
-
-!!! note
-     You can test your prompt on your own samples by adding new files under
-     `sample_inputs` dir. The file name must ends with `"yes.txt"` if the JD is
-     for a fresher, otherwise it should end with `"no.txt"`. Do not commit 
-     these files.
+   your PR, your rank will be published on the public leader board.

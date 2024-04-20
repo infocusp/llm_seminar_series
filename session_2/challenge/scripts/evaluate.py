@@ -21,15 +21,11 @@ so you can run the below sample command to evaluate it.
 python3 -m scripts.evaluate --prompt=baseline
 """
 
-import glob
 import logging
-import os
 from collections.abc import Sequence
 
-import tqdm
 from absl import app, flags
-from scripts import model, registry
-from submissions import baseline  # noqa: F401
+from scripts import dataset, evaluate_lib
 
 _PROMPT = flags.DEFINE_string(
     "prompt", None, "Name of the prompt to evaluate."
@@ -39,52 +35,12 @@ _DEBUG = flags.DEFINE_bool(
     "debug", True, "Prints prompt and response if true."
 )
 
-_SAMPLES_DIR = "sample_inputs"
 
-
-def load_sample_test_set() -> list[tuple[str, bool]]:
-    """Loads sample job descriptions and answers for local testing."""
-    sample_files = glob.glob(os.path.join(_SAMPLES_DIR, "*.txt"))
-    sample_inputs = []
-    for filepath in sample_files:
-        content = open(filepath, "r").read()
-        filename = os.path.basename(filepath).lower()
-        if filename.endswith("_yes.txt"):
-            target = True
-        elif filename.endswith("_no.txt"):
-            target = False
-        else:
-            raise ValueError(
-                "File %s must end with yes.txt or no.txt" % filepath
-            )
-        target = True if "yes" in filename.lower() else False
-        sample_inputs.append((content, target))
-    return sample_inputs
-
-
-def evaluate(prompt_name: str):
-    """Evaluates the prompt submission."""
-    # Loads a free gpt4 model.
-    llm = model.G4fModel()
-
-    # Loads a prompt submission.
-    prompt_handler = registry.get(name=prompt_name)
-
-    # Generate results for the dataset.
-    dataset = load_sample_test_set()
-    correct_pred = 0
-    for idx, (job_description, target) in enumerate(tqdm.tqdm(dataset)):
-        prompt = prompt_handler.build_prompt(job_description=job_description)
-        logging.debug("[prompt %d]\n%s", idx, prompt)
-        response = llm.generate(prompt=prompt)
-        logging.debug("[response %d]\n%s", idx, response)
-        output = prompt_handler.parse_response(model_response=response)
-        logging.debug("[target %d]\n%s", idx, target)
-        logging.debug("[prediction %d]\n%s", idx, output)
-        if output == target:
-            correct_pred += 1
-
-    print("Accuracy: [%.3f] %%" % (correct_pred / len(dataset) * 100))  # noqa: T201
+def evaluate_on_sample_dataset(prompt_name: str):
+    """Evaluates the prompt on a sample_dataset."""
+    sample_inputs = dataset.load_sample_test_set(samples_dir="sample_inputs")
+    acc = evaluate_lib.evaluate(dataset=sample_inputs, prompt_name=prompt_name)
+    print("Accuracy: [%.3f] %%" % acc)  # noqa: T201
 
 
 def main(argv: Sequence[str]) -> None:
@@ -95,8 +51,9 @@ def main(argv: Sequence[str]) -> None:
         logging.getLogger().setLevel(logging.DEBUG)
     else:
         logging.getLogger().setLevel(logging.INFO)
-    evaluate(prompt_name=_PROMPT.value)
+    evaluate_on_sample_dataset(prompt_name=_PROMPT.value)
 
 
 if __name__ == "__main__":
+    flags.mark_flag_as_required("prompt")
     app.run(main)

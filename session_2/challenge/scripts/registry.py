@@ -7,10 +7,11 @@ from scripts import base
 _SUBMISSIONS_REGISTRY: dict[str, Type[base.PromptSubmission]] = {}
 
 
-def register(name: str):
-    """Returns a decorator that registers a submission with the given name."""
+def register():
+    """Returns a decorator that registers a submission with its file as key."""
 
     def _register(klass: Type[base.PromptSubmission]):
+        name = klass.__module__.split(".")[-1]
         _SUBMISSIONS_REGISTRY[name] = klass
         return klass
 

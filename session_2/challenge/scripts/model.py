@@ -1,6 +1,6 @@
 """Model inference."""
 
-import g4f
+import g4f  # noqa: F401
 
 
 class Model:

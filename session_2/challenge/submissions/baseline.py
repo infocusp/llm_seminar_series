@@ -3,7 +3,7 @@
 from scripts import base, registry
 
 
-@registry.register("baseline")
+@registry.register()
 class Baseline(base.PromptSubmission):
     """Baseline submission."""
 
