@@ -6,8 +6,10 @@ on:
       - development
     types:
       [closed]
-permissions:
-  contents: write      
+
+# on:
+#   pull_request:
+#     types: [opened, reopened, synchronize]
 
 jobs:
   leaderboard_evaluation:
@@ -66,7 +68,4 @@ jobs:
         name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
-          author_name: hetulvp
-          author_email: hetul@infocusp.com
-          message: 'Updated leader board'
-          add: 'session_2/challenge/leaderboard.md'
+          default_author: github_actions
