@@ -64,7 +64,7 @@ jobs:
         name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
-          author_name: GitHub Actions
-          author_email: actions@github.com
+          author_name: hetulvp
+          author_email: hetul@infocusp.com
           message: 'Updated leader board'
           add: 'session_2/challenge/leaderboard.md'
