@@ -1,0 +1,25 @@
+name: Update File After PR Closed
+
+on:
+  pull_request:
+    types: [closed]
+permissions:
+  contents:
+    write
+
+jobs:
+  update-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update file
+        if: github.event.pull_request.merged == true  # Only run for merged pull requests
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"          
+          echo "Updated content" > hello.txt
+          git add hello.txt
+          git commit -m "Update file after PR merge"
+          git push origin HEAD:${{ github.base_ref }}
