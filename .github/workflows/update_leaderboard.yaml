@@ -2,8 +2,10 @@ name: Update leaderboard.
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
-
+    branches:
+      - development
+    types:
+      - merged
 jobs:
   leaderboard_evaluation:
     runs-on: ubuntu-latest
