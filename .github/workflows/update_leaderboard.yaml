@@ -1,11 +1,12 @@
-name: Update leaderboard.
+name: Update leaderboard on PR Merge.
 
 on:
   pull_request:
     branches:
       - development
     types:
-      - merged
+      [closed]
+
 jobs:
   leaderboard_evaluation:
     runs-on: ubuntu-latest
