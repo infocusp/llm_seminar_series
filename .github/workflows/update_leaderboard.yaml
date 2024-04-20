@@ -1,12 +1,15 @@
 name: Update leaderboard on PR Merge.
 
 on:
-  push:
-  # pull_request:
-  #   branches:
-  #     - development
-  #   types:
-  #     [closed]
+  pull_request:
+    branches:
+      - development
+    types:
+      [closed]
+
+# on:
+#   pull_request:
+#     types: [opened, reopened, synchronize]
 
 jobs:
   leaderboard_evaluation:
