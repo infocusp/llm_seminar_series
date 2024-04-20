@@ -13,7 +13,7 @@ class Model:
 
 class G4fModel(Model):
     """A free gpt4 model.
-    
+
     Reference: https://github.com/xtekky/gpt4free
     """
 
