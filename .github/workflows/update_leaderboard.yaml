@@ -6,6 +6,8 @@ on:
       - development
     types:
       [closed]
+permissions:
+  contents: write      
 
 jobs:
   leaderboard_evaluation:
