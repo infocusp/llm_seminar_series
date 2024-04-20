@@ -58,7 +58,7 @@ jobs:
           cd session_2/challenge
           filename=$(basename "${{ steps.changes.outputs.src_files }}")
           filename_without_extension="${filename%.*}"  # Remove extension          
-          python -m scripts.leaderboard --github_user="${{ github.actor }}" --prompt="$filename_without_extension"
+          python -m scripts.leaderboard --github_user="${{ github.event.pull_request.user.login }}" --prompt="$filename_without_extension"
 
       - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
         name: Commit changes
