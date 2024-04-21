@@ -30,13 +30,6 @@ jobs:
           echo "Found merge commit: $merge_commit"
           echo "merge_commit=$merge_commit" >> "$GITHUB_ENV"
 
-      # Merge commit has maintainer's name so we get name from second last commit
-      - name: Get original author's name
-        id: original_author
-          merge_commit=$(git log --merges --pretty=format:%H -1 $GITHUB_SHA)
-          echo "Found merge commit: $merge_commit"
-          echo "merge_commit=$merge_commit" >> "$GITHUB_ENV"
-
       - name: Set original author
         run: |
           if [ -n "$merge_commit" ] && [ "$GITHUB_SHA" = "$merge_commit" ]; then
@@ -46,7 +39,7 @@ jobs:
           else
             original_author=$commit_author
             original_email=$commit_email
-            echo "No merge commit found. Setting original author as $commit_author($commit_email)."
+            echo "Not a merge commit. Setting original author as $commit_author($commit_email)."
           fi
           echo "original_author=$original_author" >> "$GITHUB_ENV"
           echo "original_email=$original_email" >> "$GITHUB_ENV"
