@@ -12,7 +12,7 @@ class Baseline(base.PromptSubmission):
         prompt = f"""
         
         Say "YES" if the given job description is suitable for
-        a freshers other wise say "NO"
+        a freshers other wise say "NO".
 
         {job_description}.
         
