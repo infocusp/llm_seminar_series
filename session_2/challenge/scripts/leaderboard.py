@@ -2,7 +2,7 @@
 
 Sample command:
 python -m scripts.leaderboard \
-    --github_user=your_github_user \
+    --github_name=your_github_user \
     --prompt=baseline
 """
 
@@ -18,15 +18,15 @@ _PROMPT = flags.DEFINE_string(
     "prompt", None, "Name of the submitted prompt to evaluate."
 )
 
-_GITHUB_USER = flags.DEFINE_string(
-    "github_user", None, "Github username to add an entry in leaderboard."
+_GITHUB_NAME = flags.DEFINE_string(
+    "github_name", None, "Github name to add an entry in leaderboard."
 )
 
 
 _LEADERBORAD = "leaderboard.md"  # current leaderboard
 
 
-def generate_leaderboard(prompt_name: str, accuracy: float, github_user: str):
+def generate_leaderboard(prompt_name: str, accuracy: float, github_name: str):
     """Generates leaderboard."""
     # Read the markdown table into a DataFrame
     with open(_LEADERBORAD, "r") as file:
@@ -39,7 +39,7 @@ def generate_leaderboard(prompt_name: str, accuracy: float, github_user: str):
 
     # Extract rows using regex
     rows = re.findall(
-        r"\|([^|]+)\|([^|]+)\|([^|]+)\|([^|]+)\|([^|]+)\|", table_content
+        r"\|([^|]+)\|([^|]+)\|([^|]+)\|([^|]+)\|", table_content
     )[2:]
 
     # Create a DataFrame from the extracted rows
@@ -47,8 +47,7 @@ def generate_leaderboard(prompt_name: str, accuracy: float, github_user: str):
         rows,
         columns=[
             "Rank",
-            "Profile Image",
-            "GitHub Username",
+            "Name",
             "Solution",
             "Accuracy %",
         ],
@@ -65,9 +64,7 @@ def generate_leaderboard(prompt_name: str, accuracy: float, github_user: str):
     repo_url = "https://github.com/infocusp/llm_seminar_series/blob/main/session_2/challenge/submissions"
     new_entry = {
         "Rank": len(df) + 1,
-        "Profile Image": f'<img src="https://github.com/{github_user}.png" '
-        + 'width="50px" height="50px" class="profile-image">',
-        "GitHub Username": f"[{github_user}](https://github.com/{github_user})",
+        "Name": github_name,
         "Solution": f"[{prompt_name}]({repo_url}/{prompt_name}.py)",
         "Accuracy %": accuracy,
     }
@@ -75,7 +72,7 @@ def generate_leaderboard(prompt_name: str, accuracy: float, github_user: str):
     df = pd.concat([df, pd.DataFrame([new_entry])], ignore_index=True)
 
     # Keep only the highest submission for each user
-    highest_indices = df.groupby("GitHub Username")["Accuracy %"].idxmax()
+    highest_indices = df.groupby("Name")["Accuracy %"].idxmax()
     df_highest = df.loc[highest_indices]
 
     # Sort the DataFrame by "Accuracy %" column in descending order
@@ -102,19 +99,19 @@ def generate_leaderboard(prompt_name: str, accuracy: float, github_user: str):
 
     logging.info(
         "Submission by %s with prompt %s updated in the leaderboard.",
-        github_user,
+        github_name,
         prompt_name,
     )
 
 
-def update_leaderboard(prompt_name: str, github_user: str):
+def update_leaderboard(prompt_name: str, github_name: str):
     """Generates a public leaderboard by evaluating given submission."""
     sample_dataset = dataset.load_dataset_from_dir(samples_dir="dataset")
     acc = evaluate_lib.evaluate(
         dataset=sample_dataset, prompt_name=prompt_name
     )
     generate_leaderboard(
-        prompt_name=prompt_name, accuracy=acc, github_user=github_user
+        prompt_name=prompt_name, accuracy=acc, github_name=github_name
     )
 
 
@@ -124,11 +121,11 @@ def main(argv: Sequence[str]) -> None:
         raise app.UsageError("Too many command-line arguments.")
     logging.getLogger().setLevel(logging.INFO)
     update_leaderboard(
-        prompt_name=_PROMPT.value, github_user=_GITHUB_USER.value
+        prompt_name=_PROMPT.value, github_name=_GITHUB_NAME.value
     )
 
 
 if __name__ == "__main__":
     flags.mark_flag_as_required("prompt")
-    flags.mark_flag_as_required("github_user")
+    flags.mark_flag_as_required("github_name")
     app.run(main)

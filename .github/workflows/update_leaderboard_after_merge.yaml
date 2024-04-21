@@ -34,6 +34,7 @@ jobs:
         with:
           script: core.setFailed('More than one submissions are not allowed at once.')
 
+      # TODO(hetul): Get github profile from email https://api.github.com/search/users?q=EMAIL
       - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
         name: Get author's name from last commit
         id: author_name
@@ -60,10 +61,10 @@ jobs:
           cd session_2/challenge
           filename=$(basename "${{ steps.changes.outputs.src_files }}")
           filename_without_extension="${filename%.*}"  # Remove extension          
-          python -m scripts.leaderboard --github_user="${{ steps.author_name.outputs.author_name }}" --prompt="$filename_without_extension"
+          python -m scripts.leaderboard --github_name="${{ steps.author_name.outputs.author_name }}" --prompt="$filename_without_extension"
 
-      # - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
-      #   name: Commit changes
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     default_author: github_actions          
+      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
+        name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions          
