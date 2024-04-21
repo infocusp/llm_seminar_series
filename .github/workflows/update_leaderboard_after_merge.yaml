@@ -19,7 +19,7 @@ jobs:
           # If there is only one long-lived branch (e.g. master),
           # you can specify it directly.
           # If it's not configured, the repository default branch is used.
-          base: ${{ github.ref }}        
+          base: ${{ github.ref }}
           filters: |
             src:
               - added|modified: 'session_2/challenge/submissions/**'
@@ -40,7 +40,7 @@ jobs:
         id: author_name
         run: |
           author_name=$(git log -1 --pretty=format:'%an' -- "${{ steps.changes.outputs.src_files }}")
-          echo "::set-output name=author_name::$author_name"       
+          echo "{author_name}={$author_name}" >> $GITHUB_OUTPUT    
 
       - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
         name: Install Python
@@ -67,4 +67,5 @@ jobs:
         name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
+          message: Updated leaderboard
           default_author: github_actions
