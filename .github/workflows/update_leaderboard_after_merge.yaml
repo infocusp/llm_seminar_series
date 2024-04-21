@@ -20,7 +20,7 @@ jobs:
           # If there is only one long-lived branch (e.g. master),
           # you can specify it directly.
           # If it's not configured, the repository default branch is used.
-          base: ${{ github.ref }}
+          base: refs/heads/development
           filters: |
             src:
               - added|modified: 'session_2/challenge/submissions/**'
