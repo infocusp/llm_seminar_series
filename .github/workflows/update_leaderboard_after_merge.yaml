@@ -44,27 +44,10 @@ jobs:
           echo "original_author=$original_author" >> "$GITHUB_ENV"
           echo "original_email=$original_email" >> "$GITHUB_ENV"
 
-      # # Merge commit has maintainer's name so we get name from second last commit
-      # - name: Get original author's name
-      #   id: original_author
-      #   run: |
-      #     echo "Passed merge commit: $merge_commit"
-      #     echo "$(git log --format='%ae' -n 2 $merge_commit)"
-      #     original_author=$(git log --format='%an' -n 2 $merge_commit | tail -n 1)
-      #     original_email=$(git log --format='%ae' -n 2 $merge_commit | tail -n 1)
-      #     echo "Author of original commit is $original_author ($original_email)"
-      #     # echo "::set-output name=original_author::$original_author"
-      #     echo "original_author=$original_author" >> "$GITHUB_ENV"
-
-
       - name: Check if there are any changes in submissions dir
         uses: dorny/paths-filter@v3.0.2
         id: changes
         with:
-          # Use context to get the branch where commits were pushed.
-          # If there is only one long-lived branch (e.g. master),
-          # you can specify it directly.
-          # If it's not configured, the repository default branch is used.
           base: ${{ github.ref }}
           filters: |
             src:
