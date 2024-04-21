@@ -6,6 +6,7 @@ on:
       - development
 jobs:
   update-file:
+    if: github.repository == 'infocusp/llm_seminar_series'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
