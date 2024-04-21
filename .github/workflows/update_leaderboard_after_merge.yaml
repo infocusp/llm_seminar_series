@@ -11,22 +11,28 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 10
 
-      - name: Get merged commit hash
-        id: merged_commit
+      - name: Get merge commit hash
+        id: merge_commit
         run: |
-          merged_commit=$(git show --format=%H -s $GITHUB_SHA)
-          echo "Merged commit $GITHUB_SHA"
-          echo "::set-output name=merged_commit::$merged_commit"
+          merge_commit=$(git log --merges --pretty=format:%H -1 $GITHUB_SHA)
+          echo "Found merge commit: $merge_commit"
+          # echo "::set-output name=merge_commit::$merge_commit"
+          echo "merge_commit=$merge_commit" >> "$GITHUB_ENV"
 
-      - name: Get author's name from merged commit
-        id: author_name
+      # Merge commit has maintainer's name so we get name from second last commit
+      - name: Get original author's name
+        id: original_author
         run: |
-          author_name=$(git show -s --format='%ae' ${{ steps.merged_commit.outputs.merged_commit }})
-          echo "::set-output name=author_name::$author_name"
-
-      - name: Print author's name
-        run: echo "${{ steps.author_name.outputs.author_name }}"
+          echo "Passed merge commit: $merge_commit"
+          echo "$(git log --format='%ae' -n 2 $merge_commit)"
+          original_author=$(git log --format='%an' -n 2 $merge_commit | tail -n 1)
+          original_email=$(git log --format='%ae' -n 2 $merge_commit | tail -n 1)
+          echo "Author of original commit is $original_author ($original_email)"
+          # echo "::set-output name=original_author::$original_author"
+          echo "original_author=$original_author" >> "$GITHUB_ENV"
 
 
       - name: Check if there are any changes in submissions dir
@@ -60,28 +66,29 @@ jobs:
       #     # author_name=$(git log -1 --pretty=format:'%an' -- "${{ steps.changes.outputs.src_files }}")
       #     author_name=$("${{ github.event.commits[0].author.name }}")
       #     echo Last author $author_name
-      #     echo "{author_name}={$author_name}" >> $GITHUB_OUTPUT    
+      #     echo "{author_name}={$author_name}" >> $GITHUB_OUTPUT
 
-      # - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
-      #   name: Install Python
-      #   uses: actions/setup-python@v5
-      #   with:
-      #     python-version: "3.10"
+      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
+        name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 
-      # - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
-      #   name: Install dependencies
-      #   run: |
-      #     python -m pip install --upgrade pip
-      #     pip install -r session_2/challenge/requirements.txt
+      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
+        name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r session_2/challenge/requirements.txt
 
-      # - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
-      #   name: Run leaderboard update script
-      #   id: leaderboard-update
-      #   run: |
-      #     cd session_2/challenge
-      #     filename=$(basename "${{ steps.changes.outputs.src_files }}")
-      #     filename_without_extension="${filename%.*}"  # Remove extension          
-      #     python -m scripts.leaderboard --github_name="${{ steps.author_name.outputs.author_name }}" --prompt="$filename_without_extension"
+      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
+        name: Run leaderboard update script
+        id: leaderboard-update
+        run: |
+          cd session_2/challenge
+          filename=$(basename "${{ steps.changes.outputs.src_files }}")
+          filename_without_extension="${filename%.*}"  # Remove extension          
+          echo "Author name: $original_author | Submission name: $filename_without_extension"
+          python -m scripts.leaderboard --github_name="${{ steps.author_name.outputs.author_name }}" --prompt="$filename_without_extension"
 
       # - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
       #   name: Commit changes
