@@ -14,11 +14,6 @@ jobs:
         with:
           fetch-depth: 10
 
-      - name: Get merge commit hash
-        id: merge_commit
-        with:
-          fetch-depth: 10
-
       - name: Get current commit details
         id: commit_info
         run: |
@@ -33,7 +28,6 @@ jobs:
         run: |
           merge_commit=$(git log --merges --pretty=format:%H -1 $GITHUB_SHA)
           echo "Found merge commit: $merge_commit"
-          # echo "::set-output name=merge_commit::$merge_commit"
           echo "merge_commit=$merge_commit" >> "$GITHUB_ENV"
 
       # Merge commit has maintainer's name so we get name from second last commit
@@ -41,7 +35,6 @@ jobs:
         id: original_author
           merge_commit=$(git log --merges --pretty=format:%H -1 $GITHUB_SHA)
           echo "Found merge commit: $merge_commit"
-          # echo "::set-output name=merge_commit::$merge_commit"
           echo "merge_commit=$merge_commit" >> "$GITHUB_ENV"
 
       - name: Set original author
