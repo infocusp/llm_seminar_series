@@ -1,0 +1,22 @@
+Our corporate activities are growing rapidly, and we are currently seeking a full-time, office-based  Software Engineer to join our Information Technology team. The Software Engineer position will work on Administrative Systems and modernization of aging applications. Strong attention to detail, desire for process ownership, and interest in implementing new technology are highly valued.
+
+This is an incredible opportunity to join, contribute, and shape a new team, while also being a part of a large, fast-growing organization. You will be joining an organization where your contribution makes a significant impact in positively impacting people's lives, as new treatments and therapeutics are developed.
+
+Responsibilities :
+
+- Collect, analyze and document user requirements;
+- Design, modify, develop and support software applications;
+- Participate in software validation process through development, review, and/or execution of test plan/cases/scripts;
+- Create software applications by following software development life-cycle, which includes requirements gathering, design, development, testing, release, and maintenance;
+- Communicate with team members regarding projects, development, tools, and procedures;
+- Utilize skills in development areas including object oriented programming (C#), databases (SQL) web applications (ASP.NET);
+- Potential opportunities to lead software development projects.
+
+Qualifications :
+
+- Bachelor's Degree in Computer Science;
+- Experience using technologies such as C#, Angular, Webservices, GraphQL, Git and relational databases is preferred;
+- Experience in Entity Framework, Azure DevOps is advantageous;
+- Understanding of software development life cycle (SDLC) and software release management;
+- Prior experience modernizing systems to a cloud-based platform (Azure) is a plus;
+- Excellent analytical, written and oral communication skills in English.

@@ -1,0 +1,22 @@
+**Key Skills Required:**
+
+MSBI Tools - SSIS (Dynamic Column Mapping, Control flow task, Data flow task, Fuzzy lookup), SSRS, SSAS, Power BI, ETL Batch Programming & SQL Server
+
+**Roles and Responsibilities**
+
+- Should perform dynamic column mapping from multiple data source using SSIS Package
+- Must be aware of **Control Flow Task, Data Flow Task** and **Fuzzy Lookup** transformationlogics
+- Should implement error logging and catching
+- Should be able to write custom scripting in SSIS package
+- Should have strong query knowledge in SQL server
+- Should have subject knowledge on temporary tables, table variables and common tableexpressions
+- Should be able to debug the packages using Data viewers, Breakpoints, Checkpoints
+- Should be able to Interpret business requirements and effectively implement into asoftware solution.
+- Should have Good Communication skill for Client interaction.
+
+**Desired Candidate Profile**
+
+- Should have undergone training in Microsoft Business Intelligence (MSBI) tools - **SSIS and SQL Server**.
+- Should have strong analytical and problem solving skills
+- Attention to detail and good communication skill
+- Qualification: Minimum of 15 years of full time Education (10 + 2 + 3).

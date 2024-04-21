@@ -19,9 +19,8 @@ class G4fModel(Model):
 
     def generate(self, prompt: str) -> str:
         """Completes a prompt using gpt-4 for free model."""
-        # response = g4f.ChatCompletion.create(
-        #     model=g4f.models.gpt_4,
-        #     messages=[{"role": "user", "content": prompt}],
-        # )
-        response = "yes"
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.gpt_4,
+            messages=[{"role": "user", "content": prompt}],
+        )
         return response

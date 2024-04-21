@@ -3,6 +3,7 @@
 <p align="center">A multi-part seminar series on Large Language Models (LLMs).<br>
 <a href="https://infocusp.github.io/llm_seminar_series">🌐 Website</a> 
 | <a href="https://xmind.works/share/cmFNh1uK?xid=SjTLV1U0">🧠 LLM Full Mind Map</a>
+| <a href="https://infocusp.github.io/llm_seminar_series/session_2/challenge/leaderboard/">🏅 Prompting Techniques Leaderboard</a>
 <br><br>
 <a href="https://zenodo.org/doi/10.5281/zenodo.10276557"><img src="https://zenodo.org/badge/711789813.svg"></img></a>
 </p>

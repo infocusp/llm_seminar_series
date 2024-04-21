@@ -11,9 +11,9 @@ def load_dataset_from_dir(samples_dir: str) -> list[tuple[str, bool]]:
     for filepath in sample_files:
         content = open(filepath, "r").read()
         filename = os.path.basename(filepath).lower()
-        if filename.endswith("_yes.txt"):
+        if filename.endswith("_fresher.txt"):
             target = True
-        elif filename.endswith("_no.txt"):
+        elif filename.endswith("_experienced.txt"):
             target = False
         else:
             raise ValueError(

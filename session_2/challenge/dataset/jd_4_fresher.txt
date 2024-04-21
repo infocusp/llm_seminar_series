@@ -1,0 +1,35 @@
+Job Description
+
+**As a Test engineer you will be responsible for –**
+
+- Requirement analysis, test data & scenarios design and test case design and execution, debugging and unit testing, systems integration, and field testing.
+- Capture and detail the outcome of test executions and findings needed to support ongoing measurement and reports risks, defects, tests and coverage to stakeholders.
+- Collaborate with cross-functional teams to determine functional and non-functional requirements for new software or applications.
+- Explore selection of the most effective test design techniques, advance V&V tools and approaches for a problem or conducting performance or load testing.
+- Develop use cases, test scenarios, and automated test scripts for applications, configurations, and interfaces for all common SDLC test phases including FIT/SIT, UAT, regression, performance testing
+
+(throughput, timing constraints, processing time) and security testing.
+
+- Perform testing activities as per standard V&V practices and Quality Assurance
+
+Maintain thorough documentation of software artefacts test results, defect logging & categorization to expedite resolution.
+
+- Effectively communicate issues and risks in addition to daily testing status to Team Lead or Test Lead
+- Ensures timely delivery and quality of the deliverables for the assigned work
+
+**SKILLS & QUALIFICATION**
+
+- Degree or MCA in Computer Science or Computer Engineering or Degree in Electrical / Electronics & Communication / or equivalent
+- Good experience with Java, C#, API’s Testing, Windows and Mobile App Testing, Web Testing, Postman, Postgres, Source Tree, Git Ver control, common CI/CD tool of Jenkins integrate with test automation
+- Knowledge of Behavioral Driven Development (BDD) Testing techniques and apply them in product testing
+- Experience in test strategy formulation, test cases management and tracking which helped improve product quality
+- Strong knowledge in leveraging Kubernetes, Dockers, AWS for test workload generation will be plus
+
+**DESIRED BEHAVIOURAL VALUES:**
+
+- Good analytical skills, communication, and presentation abilities
+- Constant networking with thought leaders, analyst, customers & special interest groups.
+- Actively listen to others and demonstrate understanding of other points of view.
+- Take the initiative to identify, work on problems proactively and lead by example.
+- Consistently provide ideas, opinions, or information in a professional way.
+- Understand IP & trademark policies and actively promote safe practices in projects having quite a bit of R&D.
