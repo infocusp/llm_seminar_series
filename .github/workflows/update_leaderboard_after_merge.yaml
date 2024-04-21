@@ -16,6 +16,20 @@ jobs:
 
       - name: Get merge commit hash
         id: merge_commit
+        with:
+          fetch-depth: 10
+
+      - name: Get current commit details
+        id: commit_info
+        run: |
+          commit_author=$(git log --format='%an' -1)
+          commit_email=$(git log --format='%ae' -1)
+          echo "Current commit author is $commit_author ($commit_email)"
+          echo "commit_author=$commit_author" >> "$GITHUB_ENV"
+          echo "commit_email=$commit_email" >> "$GITHUB_ENV"
+
+      - name: Get merge commit hash
+        id: merge_commit
         run: |
           merge_commit=$(git log --merges --pretty=format:%H -1 $GITHUB_SHA)
           echo "Found merge commit: $merge_commit"
@@ -25,14 +39,36 @@ jobs:
       # Merge commit has maintainer's name so we get name from second last commit
       - name: Get original author's name
         id: original_author
+          merge_commit=$(git log --merges --pretty=format:%H -1 $GITHUB_SHA)
+          echo "Found merge commit: $merge_commit"
+          # echo "::set-output name=merge_commit::$merge_commit"
+          echo "merge_commit=$merge_commit" >> "$GITHUB_ENV"
+
+      - name: Set original author
         run: |
-          echo "Passed merge commit: $merge_commit"
-          echo "$(git log --format='%ae' -n 2 $merge_commit)"
-          original_author=$(git log --format='%an' -n 2 $merge_commit | tail -n 1)
-          original_email=$(git log --format='%ae' -n 2 $merge_commit | tail -n 1)
-          echo "Author of original commit is $original_author ($original_email)"
-          # echo "::set-output name=original_author::$original_author"
+          if [ -n "$merge_commit" ] && [ "$GITHUB_SHA" = "$merge_commit" ]; then
+            original_author=$(git log --format='%an' -n 2 $merge_commit | tail -n 1)
+            original_email=$(git log --format='%ae' -n 2 $merge_commit | tail -n 1)
+            echo "Author of original commit is $original_author ($original_email)"
+          else
+            original_author=$commit_author
+            original_email=$commit_email
+            echo "No merge commit found. Setting original author as $commit_author($commit_email)."
+          fi
           echo "original_author=$original_author" >> "$GITHUB_ENV"
+          echo "original_email=$original_email" >> "$GITHUB_ENV"
+
+      # # Merge commit has maintainer's name so we get name from second last commit
+      # - name: Get original author's name
+      #   id: original_author
+      #   run: |
+      #     echo "Passed merge commit: $merge_commit"
+      #     echo "$(git log --format='%ae' -n 2 $merge_commit)"
+      #     original_author=$(git log --format='%an' -n 2 $merge_commit | tail -n 1)
+      #     original_email=$(git log --format='%ae' -n 2 $merge_commit | tail -n 1)
+      #     echo "Author of original commit is $original_author ($original_email)"
+      #     # echo "::set-output name=original_author::$original_author"
+      #     echo "original_author=$original_author" >> "$GITHUB_ENV"
 
 
       - name: Check if there are any changes in submissions dir
@@ -58,22 +94,17 @@ jobs:
         with:
           script: core.setFailed('More than one submissions are not allowed at once.')
 
-      # # TODO(hetul): Get github profile from email https://api.github.com/search/users?q=EMAIL
-      # - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
-      #   name: Get author's name from last commit
-      #   id: author_name
-      #   run: |
-      #     # author_name=$(git log -1 --pretty=format:'%an' -- "${{ steps.changes.outputs.src_files }}")
-      #     author_name=$("${{ github.event.commits[0].author.name }}")
-      #     echo Last author $author_name
-      #     echo "{author_name}={$author_name}" >> $GITHUB_OUTPUT
-
       - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
         name: Install Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
+      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
+        name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r session_2/challenge/requirements.txt
       - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
         name: Install dependencies
         run: |
@@ -88,11 +119,11 @@ jobs:
           filename=$(basename "${{ steps.changes.outputs.src_files }}")
           filename_without_extension="${filename%.*}"  # Remove extension          
           echo "Author name: $original_author | Submission name: $filename_without_extension"
-          python -m scripts.leaderboard --github_name="${{ steps.author_name.outputs.author_name }}" --prompt="$filename_without_extension"
+          python -m scripts.leaderboard --github_name="$original_author" --prompt="$filename_without_extension"
 
-      # - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
-      #   name: Commit changes
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     message: Updated leaderboard
-      #     default_author: github_actions
+      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
+        name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: Updated leaderboard
+          default_author: github_actions
