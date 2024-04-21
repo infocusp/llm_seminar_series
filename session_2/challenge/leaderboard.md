@@ -12,9 +12,10 @@ Check [participation guide](how_to_participate.md).
 <center>
 
 <!-- leader-board-begins -->
-|   Rank | Name   | Solution                                                                                                         |   Accuracy % |
-|-------:|:-------|:-----------------------------------------------------------------------------------------------------------------|-------------:|
-|      1 | XYZ    | [baseline](https://github.com/infocusp/llm_seminar_series/blob/main/session_2/challenge/submissions/baseline.py) |          100 |
+|   Rank | Name        | Solution                                                                                                         |   Accuracy % |
+|-------:|:------------|:-----------------------------------------------------------------------------------------------------------------|-------------:|
+|      1 | XYZ         | [baseline](https://github.com/infocusp/llm_seminar_series/blob/main/session_2/challenge/submissions/baseline.py) |          100 |
+|      2 | Hetul Patel | [baseline](https://github.com/infocusp/llm_seminar_series/blob/main/session_2/challenge/submissions/baseline.py) |           50 |
 <!-- leader-board-ends -->
 
 </center>
