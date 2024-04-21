@@ -5,7 +5,7 @@ import logging
 import tqdm
 from scripts import model, registry
 from submissions import *  # noqa: F401, F403
-from submissions import baseline  # noqa: F401
+from submissions import baseline, baseline_copy  # noqa: F401
 
 
 def evaluate(dataset: list[tuple[str, bool]], prompt_name: str):
