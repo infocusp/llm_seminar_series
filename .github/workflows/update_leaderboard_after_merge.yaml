@@ -20,7 +20,7 @@ jobs:
           # If there is only one long-lived branch (e.g. master),
           # you can specify it directly.
           # If it's not configured, the repository default branch is used.
-          base: refs/heads/development
+          base: ${{ github.ref }}
           filters: |
             src:
               - added|modified: 'session_2/challenge/submissions/**'
@@ -29,44 +29,48 @@ jobs:
       - name: Print changed files
         run: |
           echo '${{ toJSON(steps.changes.outputs) }}'
+          author_name="${{ github.event.commits[0].author.name }}"
+          echo "Last author $author_name"
 
       - if: ${{ (steps.changes.outputs.src_count > 1) }}
         uses: actions/github-script@v7
         with:
           script: core.setFailed('More than one submissions are not allowed at once.')
 
-      # TODO(hetul): Get github profile from email https://api.github.com/search/users?q=EMAIL
-      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
-        name: Get author's name from last commit
-        id: author_name
-        run: |
-          author_name=$(git log -1 --pretty=format:'%an' -- "${{ steps.changes.outputs.src_files }}")
-          echo "{author_name}={$author_name}" >> $GITHUB_OUTPUT    
+      # # TODO(hetul): Get github profile from email https://api.github.com/search/users?q=EMAIL
+      # - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
+      #   name: Get author's name from last commit
+      #   id: author_name
+      #   run: |
+      #     # author_name=$(git log -1 --pretty=format:'%an' -- "${{ steps.changes.outputs.src_files }}")
+      #     author_name=$("${{ github.event.commits[0].author.name }}")
+      #     echo Last author $author_name
+      #     echo "{author_name}={$author_name}" >> $GITHUB_OUTPUT    
 
-      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
-        name: Install Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
+      # - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
+      #   name: Install Python
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: "3.10"
 
-      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
-        name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r session_2/challenge/requirements.txt
+      # - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
+      #   name: Install dependencies
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     pip install -r session_2/challenge/requirements.txt
 
-      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
-        name: Run leaderboard update script
-        id: leaderboard-update
-        run: |
-          cd session_2/challenge
-          filename=$(basename "${{ steps.changes.outputs.src_files }}")
-          filename_without_extension="${filename%.*}"  # Remove extension          
-          python -m scripts.leaderboard --github_name="${{ steps.author_name.outputs.author_name }}" --prompt="$filename_without_extension"
+      # - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
+      #   name: Run leaderboard update script
+      #   id: leaderboard-update
+      #   run: |
+      #     cd session_2/challenge
+      #     filename=$(basename "${{ steps.changes.outputs.src_files }}")
+      #     filename_without_extension="${filename%.*}"  # Remove extension          
+      #     python -m scripts.leaderboard --github_name="${{ steps.author_name.outputs.author_name }}" --prompt="$filename_without_extension"
 
-      - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
-        name: Commit changes
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: Updated leaderboard
-          default_author: github_actions
+      # - if: ${{ (steps.changes.outputs.src == 'true') && (steps.changes.outputs.src_count == 1) }}
+      #   name: Commit changes
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     message: Updated leaderboard
+      #     default_author: github_actions
