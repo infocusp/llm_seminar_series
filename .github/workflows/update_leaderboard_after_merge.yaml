@@ -12,6 +12,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Get merged commit hash
+        id: merged_commit
+        run: |
+          merged_commit=$(git show --format=%H -s $GITHUB_SHA)
+          echo "Merged commit $GITHUB_SHA"
+          echo "::set-output name=merged_commit::$merged_commit"
+
+      - name: Get author's name from merged commit
+        id: author_name
+        run: |
+          author_name=$(git show -s --format='%ae' ${{ steps.merged_commit.outputs.merged_commit }})
+          echo "::set-output name=author_name::$author_name"
+
+      - name: Print author's name
+        run: echo "${{ steps.author_name.outputs.author_name }}"
+
+
       - name: Check if there are any changes in submissions dir
         uses: dorny/paths-filter@v3.0.2
         id: changes
@@ -29,8 +46,6 @@ jobs:
       - name: Print changed files
         run: |
           echo '${{ toJSON(steps.changes.outputs) }}'
-          author_name="${{ github.event.commits[0].author.name }}"
-          echo "Last author $author_name"
 
       - if: ${{ (steps.changes.outputs.src_count > 1) }}
         uses: actions/github-script@v7
