@@ -5,6 +5,7 @@ on:
     branches:
       - development
 jobs:
+  if: github.repository == 'infocusp/llm_seminar_series'
   update-file:
     runs-on: ubuntu-latest
     steps:
